@@ -1,0 +1,106 @@
+@font-face {
+    font-family: Georgia;
+    src: url(assets/fonts/georgia/Georgia.ttf);
+}
+@font-face {
+    font-family: Arial;
+    src: url(assets/fonts/arial/ofont.ru_Arial.ttf);
+}
+@font-face {
+    font-family: Inter;
+    src: url(assets/fonts/inter/Inter-Regular.ttf);
+}
+:root {
+	--color-light-xl: #fff;
+	--color-light-l: #f6f6f6;
+	--color-light-s: #fafafa;
+	--color-dark-s: #cdcdcd;
+	--color-dark-m: #b2b2b2;
+	--color-dark-l: #545454;
+	--color-dark-xl: #4c4c4c;
+	--color-dark-2xl: #444;
+	--color-dark-3xl: #292929;
+	--color-primary: #f1cdb3;
+	--color-primary-light: #fddcc4;
+	--start-screen-gradient-background: #211f20;
+	--footer-gradient-background: #211f20;
+}
+:root {
+    --font-family: "Georgia", sans-serif;
+    --second-family: "Arial", sans-serif;
+    --third-family: "Inter", sans-serif;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+.contanier {
+    max-width: 1280px;
+    margin: 0 auto;
+    /* border: 1px solid red; */
+}
+.header {
+    background-image: url(assets/img/bg.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+.logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+}
+.logo-title {
+    color: var(--color-primary);
+    font-family: var(--font-family);
+    font-weight: 400;     
+    font-size: 32px; 
+    line-height: 110%;
+    letter-spacing: 0.06em;
+}
+.logo-subtitle {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    color: var(--color-light-xl);
+}
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    margin: 40px 30px;
+    /* border: 1px solid red; */
+}
+.nav-menu-list {
+    display: flex;
+    justify-content: flex-end;
+    align-self: center;
+    /* border: 1px solid red; */
+}
+.nav-menu-item {
+    list-style: none;
+    padding: 0 0 0 20px;
+}
+.nav-menu-link {
+    
+    text-decoration: none;
+    color: var(--color-dark-s);
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 160%;
+
+}
+.nav-menu-link:hover {
+    color: var(--color-light-s);
+    border-bottom: 3px solid var(--color-primary);
+}
