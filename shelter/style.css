@@ -69,15 +69,16 @@
     font-family: var(--second-family);
     font-weight: 400;
     font-size: 13px;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.1em;
     color: var(--color-light-xl);
+    padding: 10px 5px;
 }
 .nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-self: center;
-    margin: 40px 30px;
+    margin: 30px 40px;
     /* border: 1px solid red; */
 }
 .nav-menu-list {
@@ -88,16 +89,17 @@
 }
 .nav-menu-item {
     list-style: none;
-    padding: 0 0 0 20px;
+    padding: 0 0 0 35px;
 }
 .nav-menu-link {
-    
+
     text-decoration: none;
     color: var(--color-dark-s);
     font-family: var(--second-family);
     font-weight: 400;
     font-size: 15px;
     line-height: 160%;
+    padding-bottom: 0.1em;
 
 }
 .nav-menu-link:hover {
