@@ -135,13 +135,8 @@
     font-size: 15px;
     line-height: 160%;
     color: var(--color-dark-s);
-}
-.button_primary {
-   
-    
-    
-}
-.button_primary-link {
+}  
+.button-primary-link {
     padding: 15px 45px;
     border-radius: 100px;
     background: var(--color-primary);
@@ -181,7 +176,7 @@
     justify-content: space-between;
     width: 430px;
 }
-.about-title {
+.heading {
     width: 370px;
     font-family: var(--font-family);
     font-weight: 400;
@@ -200,4 +195,73 @@
     font-size: 15px;
     line-height: 160%;
     color: var(--color-dark-xl);
+}
+.our-friends {
+    background-color: var(--color-light-l);
+    padding: 81px 0 100px;
+}
+.our-friends-wropper {
+    width: 1200px;
+    height: 697px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.heading-our-friends {
+    width: 400px;
+    margin: 0;
+    text-align: center;
+}
+.our-friends-slider {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.our-friends-cards {
+    width: 990px;
+    height: 435px;
+    display: flex;
+    justify-content: space-between;
+}
+.btn-slider {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 2px solid var(--color-primary);
+    margin: 54px;
+}
+.our-friends-card {
+    width: 270px;
+    height: 435px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 9px;
+    background-color: var(--color-light-s);
+}
+.img-card {
+    width: 270px;
+    height: 270px;
+}
+.button-secondary {
+    padding: 13px 43px;
+    border-radius: 100px;
+    border: 2px solid var(--color-primary);
+    text-decoration: none;
+    color: var(--color-dark-3xl);
+    font-family: var(--font-family);
+    font-size: 17px;
+    line-height: 130%;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+}
+.slider-paragraf {
+    margin: 30px 0;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 0.06em;
+    text-align: center;
+    color: var(--color-dark-l);
 }
