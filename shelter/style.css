@@ -1,0 +1,203 @@
+@font-face {
+    font-family: Georgia;
+    src: url(assets/fonts/georgia/Georgia.ttf);
+}
+@font-face {
+    font-family: Arial;
+    src: url(assets/fonts/arial/ofont.ru_Arial.ttf);
+}
+@font-face {
+    font-family: Inter;
+    src: url(assets/fonts/inter/Inter-Regular.ttf);
+}
+:root {
+	--color-light-xl: #fff;
+	--color-light-l: #f6f6f6;
+	--color-light-s: #fafafa;
+	--color-dark-s: #cdcdcd;
+	--color-dark-m: #b2b2b2;
+	--color-dark-l: #545454;
+	--color-dark-xl: #4c4c4c;
+	--color-dark-2xl: #444;
+	--color-dark-3xl: #292929;
+	--color-primary: #f1cdb3;
+	--color-primary-light: #fddcc4;
+	--start-screen-gradient-background: #211f20;
+	--footer-gradient-background: #211f20;
+}
+:root {
+    --font-family: "Georgia", sans-serif;
+    --second-family: "Arial", sans-serif;
+    --third-family: "Inter", sans-serif;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url(assets/img/bg.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+
+  }
+.contanier {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+.logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 1px;
+}
+.logo-title {
+    color: var(--color-primary);
+    font-family: var(--font-family);
+    font-weight: 400;     
+    font-size: 32px; 
+    line-height: 110%;
+    letter-spacing: 0.06em;
+}
+.logo-subtitle {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--color-light-xl);
+    padding: 10px 5px;
+}
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+    margin: 30px 0;
+}
+.nav-menu-list {
+    display: flex;
+    justify-content: flex-end;
+    align-self: center;
+}
+.nav-menu-item {
+    list-style: none;
+    padding: 0 0 0 36px;
+}
+.nav-menu-link {
+    text-decoration: none;
+    color: var(--color-dark-s);
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 160%;
+    padding-bottom: 0.1em;
+
+}
+.nav-menu-link:hover {
+    color: var(--color-light-s);
+    border-bottom: 3px solid var(--color-primary);
+}
+.not-only {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+.not-only-content {
+    width: 461px;
+    height: 322px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 30px;
+}
+.not-only-title {
+    width: 310px;
+    height: 114px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 130%;
+    letter-spacing: 0%;
+    color: var(--color-light-xl);
+    margin: 0;
+}
+.subheading {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 160%;
+    color: var(--color-dark-s);
+}
+.button_primary {
+   
+    
+    
+}
+.button_primary-link {
+    padding: 15px 45px;
+    border-radius: 100px;
+    background: var(--color-primary);
+    text-decoration: none;
+    color: var(--color-dark-3xl);
+    font-family: var(--font-family);
+    font-size: 17px;
+    line-height: 130%;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+}
+.not-only-img {
+    padding-top: 50px;
+}
+
+.subheading-dark {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 160%;
+    color: var(--color-dark-xl);
+}
+.about-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 80px 0 100px;
+}
+.about-img {
+    width: 300px;
+    height: 408px;
+    margin-right: 120px;
+}
+.about-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 430px;
+}
+.about-title {
+    width: 370px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 127%;
+    letter-spacing: 0.06em;
+    color: var(--color-dark-l);
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+.about-paragraf {
+    margin-top: 25px;
+    margin-bottom: 0;
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 160%;
+    color: var(--color-dark-xl);
+}
