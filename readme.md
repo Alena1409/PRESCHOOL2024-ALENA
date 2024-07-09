@@ -1,1 +1,1 @@
-https://rolling-scopes-school.github.io/alena1409-JSFEPRESCHOOL2024Q2/
+https://rolling-scopes-school.github.io/alena1409-JSFEPRESCHOOL2024Q2/shelter/
