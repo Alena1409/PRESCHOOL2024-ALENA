@@ -64,6 +64,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-decoration: none;
 }
 .logo-title {
     color: var(--color-primary);
@@ -283,13 +284,23 @@
     margin: 0;
     padding: 15px 0;
 }
-.our-friends-card2 {
+.our-friends-card {
     width: 270px;
     height: 435px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--color-light-s);
+}
+.our-friends-card:hover {
+    background: var(--color-light-xl);
+
+}
+.our-friends-card:hover .button-secondary {
+    border-radius: 100px;
+    padding: 15px 45px;
+    background: var(--color-primary-light);
+    border:none;
 }
 .nav-our-friends {
     display: flex;
@@ -349,15 +360,6 @@
     border-radius: 100%;
     border: 2px solid var(--color-primary);
     margin: 54px;
-}
-.our-friends-card {
-    width: 270px;
-    height: 435px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 9px;
-    background-color: var(--color-light-s);
 }
 .img-card {
     width: 270px;
@@ -519,13 +521,14 @@
 .footer-content {
     display: flex;
     justify-content: space-between;
+    margin: 0;
+    padding: 0;
 }
 .footer-contacts {
-    height: 234;
+    width: 280px;
     display: flex;
     flex-direction: column;
     justify-content: start;
-
 }
 .footer-title {
     font-family: var(--font-family);
@@ -555,41 +558,12 @@
     text-decoration: none;
     margin-left: 20px;
 }
-.footer-location-parsgraf {
+.footer-location-link {
+    margin: -9px 0  0px 20px;
+}
+.footer-location-img {
     position: relative;
-    font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 115%;
-    letter-spacing: 0.06em;
-    color: var(--color-primary);
-    margin-top: 35px;
-    margin-left: 41px;
-}
-.footer-location-parsgraf::before {
-    position: absolute;
-    content: url(assets/icons/icon-marker.png);
-    top: 4px;
-    left: -40px;
-    
-}
-.footer-location-parsgraf2 {
-    position: relative;
-    font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 115%;
-    letter-spacing: 0.06em;
-    color: var(--color-primary);
-    margin-top: 36px;
-    margin-left: 41px;
-}
-.footer-location-parsgraf2::before {
-    position: absolute;
-    content: url(assets/icons/icon-marker.png);
-    top: -6px;
-    left: -40px;
-    
+    top: -5.5px;
 }
 .footer-img {
     width: 300px;
