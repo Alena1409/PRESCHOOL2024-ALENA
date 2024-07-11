@@ -502,9 +502,15 @@
     border-radius: 9px;
     border: none;
     padding: 12px 15px 10px 15px;
-    background: var(--color-primary);
+    background-color: var(--color-primary);
     display: flex;
     margin-top: 19px;
+}
+.credit-card:hover {
+    background-color: var(--color-primary-light);
+}
+.credit-card:hover .credit-card-link {
+    background-color: var(--color-primary-light);
 }
 .credit-card-link {
     text-decoration: none;
@@ -573,6 +579,9 @@
     color: var(--color-primary);
     text-decoration: none;
     margin-left: 20px;
+}
+.footer-content-link:hover {
+    color: var(--color-primary-light);
 }
 .footer-location-link {
     margin: -9px 0  0px 20px;
