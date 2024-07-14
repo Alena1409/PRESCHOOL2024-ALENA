@@ -605,16 +605,20 @@
     transition: 0.5s;
 }
 .footer-location-link {
-    margin: -9px 0  0px 20px;
+    margin: -6px 0 -7px 22px;
     transition: 0.5s;
 }
 .footer-location-img {
     position: relative;
-    top: -5.5px;
+    left: 1px;
+    top: -1px;
 }
 .footer-content-link:hover {
     color: var(--color-primary-light);
     font-size: 21px;
+}
+.footer-title-locftion {
+    margin: 16px 0 0px 5px;
 }
 .footer-img {
     width: 300px;
