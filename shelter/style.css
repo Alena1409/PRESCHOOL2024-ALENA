@@ -29,7 +29,7 @@
     --font-family: "Georgia", sans-serif;
     --second-family: "Arial", sans-serif;
     --third-family: "Inter", sans-serif;
-  }
+}
   * {
     box-sizing: border-box;
     scroll-behavior: smooth;
