@@ -490,7 +490,7 @@
     transition: 0.5s;
 }
 .credit-card-link:hover {
-    font-size: 21px;
+    color: var(--color-light-l);
 }
 .credit-card-link::before {
     content: url(assets/icons/credit-card.svg);
@@ -615,8 +615,7 @@
     transition: 0.5s;
 }
 .footer-content-link:hover {
-    color: var(--color-primary-light);
-    font-size: 20.5px;
+    color: var(--color-light-l);
 }
 
 
