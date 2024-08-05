@@ -742,6 +742,14 @@
         top: 4px;
     }
 }
+@media (max-width:767px) {
+    .nav-menu {
+        display: none;
+    }
+    .burger-menu {
+        display: block;
+    }
+}
 @media (max-width: 750px) {
     .friends {
         padding: 42px 0;
@@ -775,12 +783,6 @@
 }
 
 @media (max-width: 720px) {
-    .nav-menu {
-        display: none;
-    }
-    .burger-menu {
-        display: block;
-    }
     .not-only-content {
         max-width: 460px;
         width: 100%;
