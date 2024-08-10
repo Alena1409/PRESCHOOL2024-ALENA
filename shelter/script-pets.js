@@ -40,4 +40,25 @@ document.addEventListener("DOMContentLoaded", function() {
         cardsContainerRow.style.top = -offsetPets + 'px';
     });
 
-})
+    let pop = document.querySelector('.pop');
+    let modal = pop.querySelectorAll('.modal');
+
+    document.querySelectorAll('.cards-container-row .friends-card').forEach(pats => {
+        pats.onclick = () => {
+            let name = pats.getAttribute('data-name');
+            modal.forEach(text => {
+                let target = text.getAttribute('data-target');
+                if (name == target) {
+                    text.classList.add('active');
+                };
+            })
+        };
+    });
+
+    modal.forEach(close => {
+        close.querySelector('.btn-modal').onclick = () => {
+            close.classList.remove('active');
+        };
+    });
+
+});
