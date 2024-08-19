@@ -9,43 +9,50 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body id="body">
     <div class="start-screen">
-        <div class="contanier">
-            <header class="header"> <!-- 'Header' -->
-                <nav class="nav">
-                    <a href="#" class="logo">
-                        <div class="logo-title logo-title-light">Cozy House</div>
-                        <div class="logo-subtitle logo-subtitle-light">Shelter for pets in Boston</div>
-                    </a>
-                    <div class="nav-menu">
-                        <ul class="nav-menu-list">
-                            <li class="nav-menu-item"><a href="index.html"
-                                    class="nav-menu-link nav-menu-link-light nav-activ-light">About the
-                                    shelter</a></li>
-                            <li class="nav-menu-item"><a href="pets.html" class="nav-menu-link nav-menu-link-light">Our
-                                    pets</a></li>
-                            <li class="nav-menu-item"><a href="#id-help" class="nav-menu-link nav-menu-link-light">Help
-                                    the
-                                    shelter</a></li>
-                            <li class="nav-menu-item"><a href="#id-footer"
-                                    class="nav-menu-link nav-menu-link-light">Contacts</a></li>
-                        </ul>
+        <div class="hiden">
+            <div id="grey"></div>
+            <div class="contanier">
+                <header class="header"> <!-- 'Header' -->
+                    <nav class="nav">
+                        <a href="#" class="logo">
+                            <div class="logo-title logo-title-light">Cozy House</div>
+                            <div class="logo-subtitle logo-subtitle-light">Shelter for pets in Boston</div>
+                        </a>
+                        <div class="nav-menu">
+                            <ul class="nav-menu-list">
+                                <li class="nav-menu-item"><a href="index.html"
+                                        class="nav-menu-link nav-menu-link-light nav-activ-light">About the
+                                        shelter</a></li>
+                                <li class="nav-menu-item"><a href="pets.html"
+                                        class="nav-menu-link nav-menu-link-light">Our
+                                        pets</a></li>
+                                <li class="nav-menu-item"><a href="#id-help"
+                                        class="nav-menu-link nav-menu-link-light">Help
+                                        the
+                                        shelter</a></li>
+                                <li class="nav-menu-item"><a href="#id-footer"
+                                        class="nav-menu-link nav-menu-link-light">Contacts</a></li>
+                            </ul>
+                        </div>
+                        <div class="burger-menu burger-menu-light" id="burger"><span></span><span></span><span></span>
+                        </div>
+                    </nav>
+                </header>
+                <section class="not-only"> <!-- 'Not only' -->
+                    <div class="not-only-content">
+                        <h1 class="not-only-title">Not only people<br>need a house</h1>
+                        <div class="subheading">We offer to give a chance to a little and nice puppy with an
+                            extremely wide and open heart. He or she will love you more than anybody else in the world,
+                            you
+                            will see!</div>
+                        <a href="#id-friends" class="btn-primary">Make a friend</a>
                     </div>
-                    <div class="burger-menu burger-menu-light" id="burger"><span></span><span></span><span></span></div>
-                </nav>
-            </header>
-            <section class="not-only"> <!-- 'Not only' -->
-                <div class="not-only-content">
-                    <h1 class="not-only-title">Not only people<br>need a house</h1>
-                    <div class="subheading">We offer to give a chance to a little and nice puppy with an
-                        extremely wide and open heart. He or she will love you more than anybody else in the world,
-                        you
-                        will see!</div>
-                    <a href="#id-friends" class="btn-primary">Make a friend</a>
-                </div>
-                <img src="assets/img/start-screen-puppy.png" alt="dog" class="not-only-img">
-            </section>
+                    <img src="assets/img/start-screen-puppy.png" alt="dog" class="not-only-img">
+                </section>
+            </div>
+
         </div>
     </div>
     <main>
@@ -72,55 +79,242 @@
                 <div class="friends-wropper">
                     <h3 class="heading heading-friends">Our friends who <br>are looking for a house</h3>
                     <div class="friends-slider">
-                        <button class="btn-arrow btn-arrow-prev">&larr;</button>
+                        <button class="btn-ring btn-ring-normal btn-arrow btn-arrow-prev">&larr;</button>
                         <div class="friends-slider-wrapper">
                             <div class="friends-wrapper-items">
-                                <div class="friends-card">
+                                <div class="friends-card" data-name="Katrine">
                                     <img src="assets/img/pets-katrine.png" alt="Katrine" class="img-card">
                                     <p class="friends-card-paragraf">Katrine</p>
-                                    <a href="#" class="btn-secondary">Learn more</a>
+                                    <button class="btn-secondary">Learn more</button>
                                 </div>
-                                <div class="friends-card">
+                                <div class="friends-card" data-name="Jennifer">
                                     <img src="assets/img/pets-jennifer.png" alt="Jennifer" class="img-card">
                                     <p class="friends-card-paragraf">Jennifer</p>
-                                    <a href="#" class="btn-secondary">Learn more</a>
+                                    <button class="btn-secondary">Learn more</button>
                                 </div>
-                                <div class="friends-card">
+                                <div class="friends-card" data-name="Woody">
                                     <img src="assets/img/pets-woody.png" alt="Woody" class="img-card">
                                     <p class="friends-card-paragraf">Woody</p>
-                                    <a href="#" class="btn-secondary">Learn more</a>
+                                    <button class="btn-secondary">Learn more</button>
                                 </div>
-                                <div class="friends-card">
+                                <div class="friends-card" data-name="Sophia">
                                     <img src="assets/img/pets-sophia.png" alt="Sophia" class="img-card">
                                     <p class="friends-card-paragraf">Sophia</p>
-                                    <a href="#" class="btn-secondary">Learn more</a>
+                                    <button class="btn-secondary">Learn more</button>
                                 </div>
-                                <div class="friends-card">
+                                <div class="friends-card" data-name="Timmy">
                                     <img src="assets/img/pets-timmy.png" alt="Timmy" class="img-card">
                                     <p class="friends-card-paragraf">Timmy</p>
-                                    <a href="#" class="btn-secondary">Learn more</a>
+                                    <button class="btn-secondary">Learn more</button>
                                 </div>
-                                <div class="friends-card">
+                                <div class="friends-card" data-name="Charly">
                                     <img src="assets/img/pets-charly.png" alt="Charly" class="img-card">
                                     <p class="friends-card-paragraf">Charly</p>
-                                    <a href="#" class="btn-secondary">Learn more</a>
+                                    <button class="btn-secondary">Learn more</button>
                                 </div>
-                                <div class="friends-card">
+                                <div class="friends-card" data-name="Scarlett">
                                     <img src="assets/img/pets-scarlet.png" alt="Scarlett" class="img-card">
                                     <p class="friends-card-paragraf">Scarlett</p>
-                                    <a href="#" class="btn-secondary">Learn more</a>
+                                    <button class="btn-secondary">Learn more</button>
                                 </div>
-                                <div class="friends-card">
+                                <div class="friends-card" data-name="Freddie">
                                     <img src="assets/img/pets-freddie.png" alt="Freddie" class="img-card">
                                     <p class="friends-card-paragraf">Freddie</p>
-                                    <a href="#" class="btn-secondary">Learn more</a>
+                                    <button class="btn-secondary">Learn more</button>
                                 </div>
                             </div>
                         </div>
-                        <button class="btn-arrow btn-arrow-next">&rarr;</button>
+                        <button class="btn-ring btn-ring-normal btn-arrow btn-arrow-next">&rarr;</button>
                     </div>
                     <a href="pets.html" class="btn-primary ">Get to know the rest</a>
                 </div>
+            </div>
+            <div class="pop">
+
+                <div class="modal" data-target="Katrine">
+                    <div class="contanier">
+                        <div class="modal-wrapper">
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
+                            <img src="assets/img/pets-katrine.png" alt="pets-katrine" class="modal-img">
+                            <div class="modal-conten">
+                                <h3 class="modal-heading">Katrine</h3>
+                                <h4 class="modal-subheading">Cat - British Shorthair</h4>
+                                <p class="modal-text">Katrine is a beautiful girl. She is as soft as the finest velvet
+                                    with a thick lush fur. Will love you until the last breath she takes as long as you
+                                    are the one. She is picky about her affection. She loves cuddles and to stretch into
+                                    your hands for a deeper relaxations.</p>
+                                <ul class="modal-list">
+                                    <li class="modal-item"><span>Age: </span>2 months</li>
+                                    <li class="modal-item"><span>Inoculations:</span> none</li>
+                                    <li class="modal-item"><span>Diseases:</span> none</li>
+                                    <li class="modal-item"><span>Parasites:</span> none</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" data-target="Jennifer">
+                    <div class="contanier">
+                        <div class="modal-wrapper">
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
+                            <img src="assets/img/pets-jennifer.png" alt="pets-Jennifer" class="modal-img">
+                            <div class="modal-conten">
+                                <h3 class="modal-heading">Jennifer</h3>
+                                <h4 class="modal-subheading">Dog - Labrador</h4>
+                                <p class="modal-text">Jennifer is a sweet 2 months old Labrador that is patiently
+                                    waiting to find a new forever home. This girl really enjoys being able to go outside
+                                    to run and play, but won't hesitate to play up a storm in the house if she has all
+                                    of her favorite toys.</p>
+                                <ul class="modal-list">
+                                    <li class="modal-item"><span>Age: </span>2 months</li>
+                                    <li class="modal-item"><span>Inoculations:</span> none</li>
+                                    <li class="modal-item"><span>Diseases:</span> none</li>
+                                    <li class="modal-item"><span>Parasites:</span> none</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" data-target="Woody">
+                    <div class="contanier">
+                        <div class="modal-wrapper">
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
+                            <img src="assets/img/pets-woody.png" alt="pets-Woody" class="modal-img">
+                            <div class="modal-conten">
+                                <h3 class="modal-heading">Woody</h3>
+                                <h4 class="modal-subheading">Dog - Golden Retriever</h4>
+                                <p class="modal-text">Woody is a handsome 3 1/2 year old boy. Woody does know basic
+                                    commands and is a smart pup. Since he is on the stronger side, he will learn a lot
+                                    from your training. Woody will be happier when he finds a new family that can spend
+                                    a lot of time with him.</p>
+                                <ul class="modal-list">
+                                    <li class="modal-item"><span>Age: </span>2 months</li>
+                                    <li class="modal-item"><span>Inoculations:</span> none</li>
+                                    <li class="modal-item"><span>Diseases:</span> none</li>
+                                    <li class="modal-item"><span>Parasites:</span> none</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" data-target="Sophia">
+                    <div class="contanier">
+                        <div class="modal-wrapper">
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
+                            <img src="assets/img/pets-Sophia.png" alt="pets-Sophia" class="modal-img">
+                            <div class="modal-conten">
+                                <h3 class="modal-heading">Sophia</h3>
+                                <h4 class="modal-subheading">Dog - Shih tzu</h4>
+                                <p class="modal-text">Sophia here and I'm looking for my forever home to live out the
+                                    best years of my life. I am full of energy. Everyday I'm learning new things, like
+                                    how to walk on a leash, go potty outside, bark and play with toys and I still need
+                                    some practice.</p>
+                                <ul class="modal-list">
+                                    <li class="modal-item"><span>Age: </span>2 months</li>
+                                    <li class="modal-item"><span>Inoculations:</span> none</li>
+                                    <li class="modal-item"><span>Diseases:</span> none</li>
+                                    <li class="modal-item"><span>Parasites:</span> none</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" data-target="Timmy">
+                    <div class="contanier">
+                        <div class="modal-wrapper">
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
+                            <img src="assets/img/pets-timmy.png" alt="pets-Timmy" class="modal-img">
+                            <div class="modal-conten">
+                                <h3 class="modal-heading">Timmy</h3>
+                                <h4 class="modal-subheading">Cat - British Shorthair</h4>
+                                <p class="modal-text">Timmy is an adorable grey british shorthair male. He loves to play
+                                    and snuggle. He is neutered and up to date on age appropriate vaccinations. He can
+                                    be chatty and enjoys being held. Timmy has a lot to say and wants a person to share
+                                    his thoughts with.</p>
+                                <ul class="modal-list">
+                                    <li class="modal-item"><span>Age: </span>2 months</li>
+                                    <li class="modal-item"><span>Inoculations:</span> none</li>
+                                    <li class="modal-item"><span>Diseases:</span> none</li>
+                                    <li class="modal-item"><span>Parasites:</span> none</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" data-target="Charly">
+                    <div class="contanier">
+                        <div class="modal-wrapper">
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
+                            <img src="assets/img/pets-charly.png" alt="pets-Charly" class="modal-img">
+                            <div class="modal-conten">
+                                <h3 class="modal-heading">Charly</h3>
+                                <h4 class="modal-subheading">Dog - Jack Russell Terrier </h4>
+                                <p class="modal-text">This cute boy, Charly, is three years old and he likes adults and
+                                    kids. He isn’t fond of many other dogs, so he might do best in a single dog home.
+                                    Charly has lots of energy, and loves to run and play. We think a fenced yard would
+                                    make him very happy.</p>
+                                <ul class="modal-list">
+                                    <li class="modal-item"><span>Age: </span>2 months</li>
+                                    <li class="modal-item"><span>Inoculations:</span> none</li>
+                                    <li class="modal-item"><span>Diseases:</span> none</li>
+                                    <li class="modal-item"><span>Parasites:</span> none</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" data-target="Scarlett">
+                    <div class="contanier">
+                        <div class="modal-wrapper">
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
+                            <img src="assets/img/pets-scarlet.png" alt="pets-Scarlett" class="modal-img">
+                            <div class="modal-conten">
+                                <h3 class="modal-heading">Scarlett</h3>
+                                <h4 class="modal-subheading">Dog - Jack Russell Terrier</h4>
+                                <p class="modal-text">Scarlett is a happy, playful girl who will make you laugh and
+                                    smile. She forms a bond quickly and will make a loyal companion and a wonderful
+                                    family dog or a good companion for a single individual too since she likes to hang
+                                    out and be with her human.</p>
+                                <ul class="modal-list">
+                                    <li class="modal-item"><span>Age: </span>2 months</li>
+                                    <li class="modal-item"><span>Inoculations:</span> none</li>
+                                    <li class="modal-item"><span>Diseases:</span> none</li>
+                                    <li class="modal-item"><span>Parasites:</span> none</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal" data-target="Freddie">
+                    <div class="contanier">
+                        <div class="modal-wrapper">
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
+                            <img src="assets/img/pets-freddie.png" alt="pets-Freddie" class="modal-img">
+                            <div class="modal-conten">
+                                <h3 class="modal-heading">Freddie</h3>
+                                <h4 class="modal-subheading">Cat - British Shorthair</h4>
+                                <p class="modal-text">Freddie is a little shy at first, but very sweet when he warms up.
+                                    He likes playing with shoe strings and bottle caps. He is quick to learn the rhythms
+                                    of his human’s daily life. Freddie has bounced around a lot in his life, and is
+                                    looking to find his forever home.</p>
+                                <ul class="modal-list">
+                                    <li class="modal-item"><span>Age: </span>2 months</li>
+                                    <li class="modal-item"><span>Inoculations:</span> none</li>
+                                    <li class="modal-item"><span>Diseases:</span> none</li>
+                                    <li class="modal-item"><span>Parasites:</span> none</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
         <section id="id-help" class="help"> <!-- 'Help' -->
