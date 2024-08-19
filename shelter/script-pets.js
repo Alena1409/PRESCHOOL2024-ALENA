@@ -1,7 +1,28 @@
 document.addEventListener("DOMContentLoaded", function() {
+
+    // burger-menu
+
     document.getElementById('burger-dark').addEventListener('click', function () {
         document.querySelector('.header-pets').classList.toggle('open');
-    })
+        document.getElementById('grey').classList.toggle('grey');
+        document.getElementById('body').classList.toggle('stop-scroll');
+
+        document.getElementById('grey').addEventListener('click', function () {
+            document.querySelector('header').classList.remove('open');
+            document.getElementById('grey').classList.remove('grey');
+            document.getElementById('body').classList.remove('stop-scroll');
+        });
+
+        document.querySelectorAll('.nav-menu-link').forEach(function (item) {
+            item.addEventListener('click', function () {
+                document.querySelector('header').classList.remove('open');
+                document.getElementById('grey').classList.remove('grey');
+                document.getElementById('body').classList.remove('stop-scroll');
+            });
+        });
+    });
+
+    // slider
 
 
     let offsetPets = 0; // смещение от левого края
@@ -50,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 let target = text.getAttribute('data-target');
                 if (name == target) {
                     text.classList.add('active');
+                    document.getElementById('body').classList.add('stop-scroll');
                 };
             })
         };
@@ -58,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
     modal.forEach(close => {
         close.querySelector('.btn-modal').onclick = () => {
             close.classList.remove('active');
+            document.getElementById('body').classList.remove('stop-scroll');
         };
     });
 

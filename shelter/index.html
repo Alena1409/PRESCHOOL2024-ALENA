@@ -9,43 +9,50 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body id="body">
     <div class="start-screen">
-        <div class="contanier">
-            <header class="header"> <!-- 'Header' -->
-                <nav class="nav">
-                    <a href="#" class="logo">
-                        <div class="logo-title logo-title-light">Cozy House</div>
-                        <div class="logo-subtitle logo-subtitle-light">Shelter for pets in Boston</div>
-                    </a>
-                    <div class="nav-menu">
-                        <ul class="nav-menu-list">
-                            <li class="nav-menu-item"><a href="index.html"
-                                    class="nav-menu-link nav-menu-link-light nav-activ-light">About the
-                                    shelter</a></li>
-                            <li class="nav-menu-item"><a href="pets.html" class="nav-menu-link nav-menu-link-light">Our
-                                    pets</a></li>
-                            <li class="nav-menu-item"><a href="#id-help" class="nav-menu-link nav-menu-link-light">Help
-                                    the
-                                    shelter</a></li>
-                            <li class="nav-menu-item"><a href="#id-footer"
-                                    class="nav-menu-link nav-menu-link-light">Contacts</a></li>
-                        </ul>
+        <div class="hiden">
+            <div id="grey"></div>
+            <div class="contanier">
+                <header class="header"> <!-- 'Header' -->
+                    <nav class="nav">
+                        <a href="#" class="logo">
+                            <div class="logo-title logo-title-light">Cozy House</div>
+                            <div class="logo-subtitle logo-subtitle-light">Shelter for pets in Boston</div>
+                        </a>
+                        <div class="nav-menu">
+                            <ul class="nav-menu-list">
+                                <li class="nav-menu-item"><a href="index.html"
+                                        class="nav-menu-link nav-menu-link-light nav-activ-light">About the
+                                        shelter</a></li>
+                                <li class="nav-menu-item"><a href="pets.html"
+                                        class="nav-menu-link nav-menu-link-light">Our
+                                        pets</a></li>
+                                <li class="nav-menu-item"><a href="#id-help"
+                                        class="nav-menu-link nav-menu-link-light">Help
+                                        the
+                                        shelter</a></li>
+                                <li class="nav-menu-item"><a href="#id-footer"
+                                        class="nav-menu-link nav-menu-link-light">Contacts</a></li>
+                            </ul>
+                        </div>
+                        <div class="burger-menu burger-menu-light" id="burger"><span></span><span></span><span></span>
+                        </div>
+                    </nav>
+                </header>
+                <section class="not-only"> <!-- 'Not only' -->
+                    <div class="not-only-content">
+                        <h1 class="not-only-title">Not only people<br>need a house</h1>
+                        <div class="subheading">We offer to give a chance to a little and nice puppy with an
+                            extremely wide and open heart. He or she will love you more than anybody else in the world,
+                            you
+                            will see!</div>
+                        <a href="#id-friends" class="btn-primary">Make a friend</a>
                     </div>
-                    <div class="burger-menu burger-menu-light" id="burger"><span></span><span></span><span></span></div>
-                </nav>
-            </header>
-            <section class="not-only"> <!-- 'Not only' -->
-                <div class="not-only-content">
-                    <h1 class="not-only-title">Not only people<br>need a house</h1>
-                    <div class="subheading">We offer to give a chance to a little and nice puppy with an
-                        extremely wide and open heart. He or she will love you more than anybody else in the world,
-                        you
-                        will see!</div>
-                    <a href="#id-friends" class="btn-primary">Make a friend</a>
-                </div>
-                <img src="assets/img/start-screen-puppy.png" alt="dog" class="not-only-img">
-            </section>
+                    <img src="assets/img/start-screen-puppy.png" alt="dog" class="not-only-img">
+                </section>
+            </div>
+
         </div>
     </div>
     <main>
@@ -72,7 +79,7 @@
                 <div class="friends-wropper">
                     <h3 class="heading heading-friends">Our friends who <br>are looking for a house</h3>
                     <div class="friends-slider">
-                        <button class="btn-arrow btn-arrow-prev">&larr;</button>
+                        <button class="btn-ring btn-ring-normal btn-arrow btn-arrow-prev">&larr;</button>
                         <div class="friends-slider-wrapper">
                             <div class="friends-wrapper-items">
                                 <div class="friends-card" data-name="Katrine">
@@ -117,7 +124,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn-arrow btn-arrow-next">&rarr;</button>
+                        <button class="btn-ring btn-ring-normal btn-arrow btn-arrow-next">&rarr;</button>
                     </div>
                     <a href="pets.html" class="btn-primary ">Get to know the rest</a>
                 </div>
@@ -127,7 +134,7 @@
                 <div class="modal" data-target="Katrine">
                     <div class="contanier">
                         <div class="modal-wrapper">
-                            <button class="btn-modal">&times;</button>
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
                             <img src="assets/img/pets-katrine.png" alt="pets-katrine" class="modal-img">
                             <div class="modal-conten">
                                 <h3 class="modal-heading">Katrine</h3>
@@ -150,12 +157,15 @@
                 <div class="modal" data-target="Jennifer">
                     <div class="contanier">
                         <div class="modal-wrapper">
-                            <button class="btn-modal">&times;</button>
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
                             <img src="assets/img/pets-jennifer.png" alt="pets-Jennifer" class="modal-img">
                             <div class="modal-conten">
                                 <h3 class="modal-heading">Jennifer</h3>
                                 <h4 class="modal-subheading">Dog - Labrador</h4>
-                                <p class="modal-text">Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.</p>
+                                <p class="modal-text">Jennifer is a sweet 2 months old Labrador that is patiently
+                                    waiting to find a new forever home. This girl really enjoys being able to go outside
+                                    to run and play, but won't hesitate to play up a storm in the house if she has all
+                                    of her favorite toys.</p>
                                 <ul class="modal-list">
                                     <li class="modal-item"><span>Age: </span>2 months</li>
                                     <li class="modal-item"><span>Inoculations:</span> none</li>
@@ -170,7 +180,7 @@
                 <div class="modal" data-target="Woody">
                     <div class="contanier">
                         <div class="modal-wrapper">
-                            <button class="btn-modal">&times;</button>
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
                             <img src="assets/img/pets-woody.png" alt="pets-Woody" class="modal-img">
                             <div class="modal-conten">
                                 <h3 class="modal-heading">Woody</h3>
@@ -193,7 +203,7 @@
                 <div class="modal" data-target="Sophia">
                     <div class="contanier">
                         <div class="modal-wrapper">
-                            <button class="btn-modal">&times;</button>
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
                             <img src="assets/img/pets-Sophia.png" alt="pets-Sophia" class="modal-img">
                             <div class="modal-conten">
                                 <h3 class="modal-heading">Sophia</h3>
@@ -216,7 +226,7 @@
                 <div class="modal" data-target="Timmy">
                     <div class="contanier">
                         <div class="modal-wrapper">
-                            <button class="btn-modal">&times;</button>
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
                             <img src="assets/img/pets-timmy.png" alt="pets-Timmy" class="modal-img">
                             <div class="modal-conten">
                                 <h3 class="modal-heading">Timmy</h3>
@@ -239,7 +249,7 @@
                 <div class="modal" data-target="Charly">
                     <div class="contanier">
                         <div class="modal-wrapper">
-                            <button class="btn-modal">&times;</button>
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
                             <img src="assets/img/pets-charly.png" alt="pets-Charly" class="modal-img">
                             <div class="modal-conten">
                                 <h3 class="modal-heading">Charly</h3>
@@ -262,7 +272,7 @@
                 <div class="modal" data-target="Scarlett">
                     <div class="contanier">
                         <div class="modal-wrapper">
-                            <button class="btn-modal">&times;</button>
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
                             <img src="assets/img/pets-scarlet.png" alt="pets-Scarlett" class="modal-img">
                             <div class="modal-conten">
                                 <h3 class="modal-heading">Scarlett</h3>
@@ -285,7 +295,7 @@
                 <div class="modal" data-target="Freddie">
                     <div class="contanier">
                         <div class="modal-wrapper">
-                            <button class="btn-modal">&times;</button>
+                            <button class="btn-ring btn-ring-normal btn-modal">&times;</button>
                             <img src="assets/img/pets-freddie.png" alt="pets-Freddie" class="modal-img">
                             <div class="modal-conten">
                                 <h3 class="modal-heading">Freddie</h3>
