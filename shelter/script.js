@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //данные по питомцам
     const pets = [
         {
-            "name": "Jennifer",
+            "name": "Jennifer0",
             "img": "./assets/img/pets-jennifer.png",
             "type": "Dog",
             "breed": "Labrador",
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Sophia",
+            "name": "Sophia1",
             "img": "./assets/img/pets-sophia.png",
             "type": "Dog",
             "breed": "Shih tzu",
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Woody",
+            "name": "Woody2",
             "img": "./assets/img/pets-woody.png",
             "type": "Dog",
             "breed": "Golden Retriever",
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Scarlett",
+            "name": "Scarlett3",
             "img": "./assets/img/pets-scarlet.png",
             "type": "Dog",
             "breed": "Jack Russell Terrier",
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Katrine",
+            "name": "Katrine4",
             "img": "./assets/img/pets-katrine.png",
             "type": "Cat",
             "breed": "British Shorthair",
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Timmy",
+            "name": "Timmy5",
             "img": "./assets/img/pets-timmy.png",
             "type": "Cat",
             "breed": "British Shorthair",
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Freddie",
+            "name": "Freddie6",
             "img": "./assets/img/pets-freddie.png",
             "type": "Cat",
             "breed": "British Shorthair",
@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Charly",
+            "name": "Charly7",
             "img": "./assets/img/pets-charly.png",
             "type": "Dog",
             "breed": "Jack Russell Terrier",
@@ -118,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cardsLeft = document.querySelector('.cards-left');
     const cardsActive = document.querySelector('.cards-active');
     const cardsRight = document.querySelector('.cards-right');
+    const pop = document.querySelector('.pop');
 
     const namePets = pets.map(pet => {
         return pet.name
@@ -125,23 +126,45 @@ document.addEventListener("DOMContentLoaded", function () {
     const imgPets = pets.map(pet => {
         return pet.img
     });
+    const typePets = pets.map(pet => {
+        return pet.type
+    });
+    const breedPets = pets.map(pet => {
+        return pet.breed
+    });
+    const descriptionPets = pets.map(pet => {
+        return pet.description
+    });
+    const agePets = pets.map(pet => {
+        return pet.age
+    });
+    const inoculationsPets = pets.map(pet => {
+        return pet.inoculations
+    });
+    const diseasesPets = pets.map(pet => {
+        return pet.diseases
+    });
+    const parasitesPets = pets.map(pet => {
+        return pet.parasites
+    });
 
+    //const random = (max, min) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-    const createCards = (min, max) => {
+    const createCards = (i) => {
 
-        const random = Math.floor(Math.random() * (max - min + 1)) + min;
-
+        // const random = Math.floor(Math.random() * (max - min + 1)) + min;
         //let rondNumber = Math.floor(Math.random() * 8)
 
         const card = document.createElement('div');
         card.classList.add('friends-card');
+
         const imgCard = document.createElement('img');
         imgCard.classList.add('img-card');
-        imgCard.src = imgPets[`${random}`];
+        imgCard.src = imgPets[i];
 
         const nameCard = document.createElement('p');
         nameCard.classList.add('friends-card-paragraf');
-        nameCard.innerHTML = namePets[`${random}`];
+        nameCard.innerHTML = namePets[i];
 
         const btnCard = document.createElement('button');
         btnCard.classList.add('btn-secondary');
@@ -151,26 +174,147 @@ document.addEventListener("DOMContentLoaded", function () {
         card.append(nameCard);
         card.append(btnCard);
 
+        //модалка
+
+        const modal = document.createElement('div');
+        modal.classList.add('modal', 'display-none');
+        pop.append(modal);
+
+        const modalWrapper = document.createElement('div');
+        modalWrapper.classList.add('modal-wrapper')
+        modal.append(modalWrapper);
+
+        const btnModal = document.createElement('div');
+        btnModal.classList.add('btn-ring', 'btn-ring-normal', 'btn-modal');
+        btnModal.innerHTML = `&times;`;
+
+        const imgModal = document.createElement('img');
+        imgModal.classList.add('modal-img');
+        imgModal.src = imgPets[i];
+
+        const modalConten = document.createElement('div');
+        modalConten.classList.add('modal-conten');
+
+        modalWrapper.append(btnModal);
+        modalWrapper.append(imgModal);
+        modalWrapper.append(modalConten);
+
+        const modalHeading = document.createElement('h3');
+        modalHeading.classList.add('modal-heading');
+        modalHeading.innerHTML = namePets[i];
+
+        const modalSubheading = document.createElement('h4');
+        modalSubheading.classList.add('modal-subheading');
+        modalSubheading.innerHTML = `${typePets[i]} - ${breedPets[i]}`;
+
+        const modalText = document.createElement('p');
+        modalText.classList.add('modal-text');
+        modalText.innerHTML = descriptionPets[i];
+
+        const modalList = document.createElement('ul');
+        modalList.classList.add('modal-list');
+
+        modalConten.append(modalHeading);
+        modalConten.append(modalSubheading);
+        modalConten.append(modalText);
+        modalConten.append(modalList);
+
+        const age = document.createElement('li');
+        age.classList.add('modal-item');
+        age.innerHTML = `<span>Age: </span>${agePets[i]}`;
+
+        const inoculations = document.createElement('li');
+        inoculations.classList.add('modal-item');
+        inoculations.innerHTML = `<span>inoculations: </span>${inoculationsPets[i]}`;
+
+        const diseases = document.createElement('li');
+        diseases.classList.add('modal-item');
+        diseases.innerHTML = `<span>Diseases: </span>${diseasesPets[i]}`;
+
+        const parasites = document.createElement('li');
+        parasites.classList.add('modal-item');
+        parasites.innerHTML = `<span>Parasites: </span>${parasitesPets[i]}`;
+
+        modalList.append(age);
+        modalList.append(inoculations);
+        modalList.append(diseases);
+        modalList.append(parasites);
+
+        card.addEventListener('click', () => {
+            modal.classList.remove('display-none');
+            document.getElementById('body').classList.add('stop-scroll');
+        })
+
+        btnModal.addEventListener('click', () => {
+            modal.classList.add('display-none');
+            document.getElementById('body').classList.remove('stop-scroll');
+        })
+
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.classList.add('display-none');
+                document.getElementById('body').classList.remove('stop-scroll');
+            }
+        })
+
         return card;
     }
 
-    for(let i = 0; i < 3; i++) {
-        const card = createCards(0, 7);
-        cardsLeft.append(card)
+    const a = () => {
+
+        let rondNumber = Math.floor(Math.random() * 5)
+
+        for (let i = rondNumber; i < (rondNumber + 3); i++) {
+            console.log(rondNumber)
+            const card = createCards(i);
+            cardsActive.append(card);
+        }
+        if (rondNumber == 0) {
+            cardsLeft.append(createCards(3))
+            cardsLeft.append(createCards(4))
+            cardsLeft.append(createCards(5))
+            cardsRight.append(createCards(6))
+            cardsRight.append(createCards(7))
+            cardsRight.append(createCards(3))
+        } else if (rondNumber == 1) {
+            cardsLeft.append(createCards(4))
+            cardsLeft.append(createCards(5))
+            cardsLeft.append(createCards(6))
+            cardsRight.append(createCards(7))
+            cardsRight.append(createCards(0))
+            cardsRight.append(createCards(4))
+        } else if (rondNumber == 2) {
+            cardsLeft.append(createCards(5))
+            cardsLeft.append(createCards(6))
+            cardsLeft.append(createCards(7))
+            cardsRight.append(createCards(0))
+            cardsRight.append(createCards(1))
+            cardsRight.append(createCards(5))
+        } else if (rondNumber == 3) {
+            cardsLeft.append(createCards(6))
+            cardsLeft.append(createCards(7))
+            cardsLeft.append(createCards(0))
+            cardsRight.append(createCards(1))
+            cardsRight.append(createCards(2))
+            cardsRight.append(createCards(6))
+        } else if (rondNumber == 4) {
+            cardsLeft.append(createCards(7))
+            cardsLeft.append(createCards(0))
+            cardsLeft.append(createCards(1))
+            cardsRight.append(createCards(2))
+            cardsRight.append(createCards(3))
+            cardsRight.append(createCards(7))
+        } else if (rondNumber == 5) {
+            cardsLeft.append(createCards(0))
+            cardsLeft.append(createCards(1))
+            cardsLeft.append(createCards(2))
+            cardsRight.append(createCards(3))
+            cardsRight.append(createCards(4))
+            cardsRight.append(createCards(0))
+        }
     }
+    a();
 
-    for(let i = 0; i < 3; i++){
-        const card = createCards(0, 7);
-        cardsActive.append(card)
-    }
-
-    for(let i = 0; i < 3; i++){
-        const card = createCards(0, 7);
-        cardsRight.append(card)
-    }
-
-
-    
     const btnLeft = document.querySelector('.btn-left');
     const btnRight = document.querySelector('.btn-right');
     const slider = document.querySelector('.slider');
@@ -192,22 +336,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     slider.addEventListener("animationend", (event) => {
 
+        let rondNumber = Math.floor(Math.random() * 5)
 
         if (event.animationName === "move-left") {
+
+
             slider.classList.remove('transition-left');
+
             cardsActive.innerHTML = cardsLeft.innerHTML;
+            
             cardsLeft.innerHTML = "";
-            for(let i = 0; i < 3; i++){
-                const card = createCards(0, 7);
+            for (let i = rondNumber; i < rondNumber + 3; i++) {
+                const card = createCards(i);
                 cardsLeft.append(card)
             }
 
+
         } else {
+
             slider.classList.remove('transition-right');
+
             cardsActive.innerHTML = cardsRight.innerHTML;
+
             cardsRight.innerHTML = "";
-            for(let i = 0; i < 3; i++){
-                const card = createCards(0, 7);
+            for (let i = rondNumber; i < rondNumber + 3; i++) {
+                const card = createCards(i);
                 cardsRight.append(card)
             }
 
