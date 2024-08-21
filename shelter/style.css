@@ -124,6 +124,14 @@ body {
 .btn-3 {
     display: none;
 }
+/* 
+.btn-left{
+    z-index: 8;
+}
+.btn-right{
+    z-index: 8;
+
+} */
   
 .stop-scroll {
     overflow: hidden;
@@ -395,6 +403,48 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
+.slider-wrapper {
+    width: 990px;
+    height: 435px;
+    margin: 0 auto;
+    display: flex;
+    overflow: hidden;
+}
+.slider {
+    display: flex;
+    position: relative;
+    left: -990px;
+    transition: all ease 1s;
+}
+
+.cards{
+    display: flex;
+    gap: 90px;
+}
+
+@keyframes move-left {
+    from {left: -990px;}
+    to {left: 0px;}
+}
+
+.transition-left {
+    animation-name: move-left;
+    animation-duration: 6s;
+}
+
+@keyframes move-right {
+    from {left: -990px;}
+    to {left: -1980px;}
+}
+
+.transition-right {
+    animation-name: move-right;
+    animation-duration: 5s;
+}
+ 
+/* карточки не трогать */
+    
 .friends-card {
     width: 270px;
     height: 435px;
@@ -428,38 +478,27 @@ body {
     background: var(--color-primary-light);
     border:none;
 }
+/* ========= */
 
-.friends-slider-wrapper {
-    width: 990px;
-    height: 435px;
-    margin: 0 auto;
-    overflow: hidden;
-}
-.friends-wrapper-items {
-    height: 435px;
-    width: 2790px;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    left: 0;
-    transition: all ease 1s;
+.display-none {
+    display: none;
 }
 
 .modal {
-    display: none;
+    /* display: block; */
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(41, 41, 41, 0.6);
+    background-color: rgba(41, 41, 41, 0.2);
     z-index: 900;
 }
 
 .modal-wrapper {
     position: relative;
     margin: 188px auto;
-    box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.04);
+    /* box-shadow: 0 2px 35px 14px rgba(13, 13, 13, 0.04); */
     background-color: var(--color-light-s);
     border-radius: 9px;
     display: flex;
@@ -756,10 +795,10 @@ li::marker {
 
 
 @media (max-width: 1210px) {
-    .friends-slider-wrapper {
+    .slider-wrapper {
         width: 580px;
     }
-    .friends-wrapper-items {
+    .slider {
         width: 2440px;
     }
     .in-addition-wrapper{
@@ -1020,11 +1059,11 @@ li::marker {
         align-items: start;
         margin-bottom: 15px;
     }
-    .friends-slider-wrapper {
+    .slider-wrapper {
         width: 270px;
         order: -1;
     }
-    .friends-wrapper-items {
+    .slider {
         width: 2160px;
     }
     .heading-friends {
