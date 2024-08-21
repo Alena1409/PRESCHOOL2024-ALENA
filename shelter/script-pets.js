@@ -260,9 +260,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const a = () => {
         
 
+        const arr = [];
         for (let i = 0; i < 8; i++) {
             const card = createCards(i);
-            cardsContainerRow.append(card);
+            arr.push(card);
+            arr.sort(() => Math.random() - 0.5)
+            arr.forEach(pet => cardsContainerRow.append(pet))
         }
 
         const arr1 = [];
