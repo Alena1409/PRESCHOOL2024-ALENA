@@ -114,9 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     ];
 
-    const cardsLeft = document.querySelector('.cards-left');
-    const cardsActive = document.querySelector('.cards-active');
-    const cardsRight = document.querySelector('.cards-right');
+
     const pop = document.querySelector('.pop');
     const cardsContainerRow = document.querySelector('.cards-container-row')
 
@@ -168,8 +166,6 @@ document.addEventListener("DOMContentLoaded", function () {
         card.append(imgCard);
         card.append(nameCard);
         card.append(btnCard);
-
-        //модалка
 
         const modal = document.createElement('div');
         modal.classList.add('modal', 'display-none');
@@ -255,63 +251,76 @@ document.addEventListener("DOMContentLoaded", function () {
         return card;
     }
 
-    
 
-    const a = () => {
-        
+    // const arr = [];
 
-        const arr = [];
-        for (let i = 0; i < 8; i++) {
-            const card = createCards(i);
-            arr.push(card);
-            arr.sort(() => Math.random() - 0.5)
-            arr.forEach(pet => cardsContainerRow.append(pet))
-        }
+    const createArrPets = (repeat, a) => { //repeat - сколько раз создать группу животных; a - сколько подтянуть животных 7 животных - ставлю 8
 
-        const arr1 = [];
-        for (let i = 0; i < 8; i++) {
-            const card = createCards(i);
-            arr1.push(card);
-            arr1.sort(() => Math.random() - 0.5)
-            arr1.forEach(pet => cardsContainerRow.append(pet))
-        }
-        const arr2 = [];
-        for (let i = 0; i < 8; i++) {
-            const card = createCards(i);
-            arr2.push(card);
-            arr2.sort(() => Math.random() - 0.5)
-            arr2.forEach(pet => cardsContainerRow.append(pet))
-        }
-        const arr3 = [];
-        for (let i = 0; i < 8; i++) {
-            const card = createCards(i);
-            arr3.push(card);
-            arr3.sort(() => Math.random() - 0.5)
-            arr3.forEach(pet => cardsContainerRow.append(pet))
-        }
-        const arr4 = [];
-        for (let i = 0; i < 8; i++) {
-            const card = createCards(i);
-            arr4.push(card);
-            arr4.sort(() => Math.random() - 0.5)
-            arr4.forEach(pet => cardsContainerRow.append(pet))
-        }
-        const arr5 = [];
-        for (let i = 0; i < 8; i++) {
-            const card = createCards(i);
-            arr5.push(card);
-            arr5.sort(() => Math.random() - 0.5)
-            arr5.forEach(pet => cardsContainerRow.append(pet))
-        }
-    }
+        for (let i = 0; i < repeat; i++) {
+            
+            const arr = [];
 
-    a();
+            for (let i = 0; i < a; i++) {
+                
+                const card = createCards(i);
+                
+                arr.push(card);
+                arr.sort(() => Math.random() - 0.5);
+                arr.forEach(pet => cardsContainerRow.append(pet));
+            };
+        };
+
+    };
+
+
+    createArrPets(6, 8);
+
+
 
     const btnPrev = document.querySelector('.btn-paginator-prev')
     const btnNext = document.querySelector('.btn-paginator-next')
     const btnStart = document.querySelector('.btn-paginator-prev-start')
     const btnEnd = document.querySelector('.btn-paginator-next-end')
     const btn1 = document.querySelector('.btn-1')
+
+
+
+/* пробую пагинацию
+    const cardsOnPage = 8;
+
+    btn1.innerHTML = 1;
+
+    /* 
+    1 - 0 8
+    2 - 8 16
+    3 - 16 24
+    4 - 24 32
+    5 - 32 40
+    6 - 40 48
+
+
+    /*
+   
+    const arrPets = createArrPets(6);
+
+   let pageNumber = Number(btn1.innerHTML);
+        let start = (pageNumber - 1) * cardsOnPage;
+        let end = start + cardsOnPage;
+   
+
+
+    btnNext.addEventListener('click', () => { 
+
+        let notes = arrPets.slice(start, end)
+
+        console.log(notes);
+  
+        
+
+    })
+    */
+
+
 
     let topUp = 0;
     let clicks = Number(btn1.innerHTML);
@@ -326,13 +335,13 @@ document.addEventListener("DOMContentLoaded", function () {
         btnPrev.classList.remove('btn-ring-inactive')
         btnStart.classList.remove('btn-ring-inactive')
         btnPrev.classList.remove('btn-ring-normal')
-        btnStart.classList.remove('btn-ring-normal') 
+        btnStart.classList.remove('btn-ring-normal')
     }
 
     const startInvactive = () => {
         btnStart.classList.add('btn-ring-inactive')
         btnPrev.classList.add('btn-ring-inactive')
-        btnStart.classList.remove('btn-ring-normal') 
+        btnStart.classList.remove('btn-ring-normal')
         btnPrev.classList.remove('btn-ring-normal')
 
         btnEnd.classList.remove('btn-ring-inactive')
@@ -341,15 +350,15 @@ document.addEventListener("DOMContentLoaded", function () {
         btnNext.classList.add('btn-ring-normal')
     }
 
-
     btnNext.addEventListener('click', function () {
 
-        topUp = topUp + 930;
+            topUp = topUp + 930;
 
-        if (topUp > 4650) {
-            topUp = 4650;
-        };
-
+            if (topUp > 4650) {
+                topUp = 4650;
+            };
+    
+            
         cardsContainerRow.style.top = -topUp + 'px';
 
         if (clicks < 6) {
@@ -357,28 +366,25 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             clicks = 6;
         }
-
         btn1.innerHTML = clicks;
 
-        switch(clicks) {
-            case 2: 
-            btnStart.classList.remove('btn-ring-inactive')
-            btnStart.classList.add('btn-ring-normal')
-            btnPrev.classList.remove('btn-ring-inactive')
-            btnPrev.classList.add('btn-ring-normal')
-            break;
+        switch (clicks) {
+            case 2:
+                btnStart.classList.remove('btn-ring-inactive')
+                btnStart.classList.add('btn-ring-normal')
+                btnPrev.classList.remove('btn-ring-inactive')
+                btnPrev.classList.add('btn-ring-normal')
+                break;
 
             case 6:
-            btnEnd.classList.add('btn-ring-inactive')
-            btnEnd.classList.remove('btn-ring-normal')
-            btnNext.classList.add('btn-ring-inactive')
-            btnNext.classList.remove('btn-ring-normal')
-            btnStart.classList.add('btn-ring-normal')
-            btnPrev.classList.add('btn-ring-normal')
-            break;
-
+                btnEnd.classList.add('btn-ring-inactive')
+                btnEnd.classList.remove('btn-ring-normal')
+                btnNext.classList.add('btn-ring-inactive')
+                btnNext.classList.remove('btn-ring-normal')
+                btnStart.classList.add('btn-ring-normal')
+                btnPrev.classList.add('btn-ring-normal')
+                break;
         }
-
     })
 
     btnPrev.addEventListener('click', function () {
@@ -397,53 +403,53 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         btn1.innerHTML = clicks;
 
-        switch(clicks) {
+        switch (clicks) {
             case 5:
-            btnEnd.classList.remove('btn-ring-inactive')
-            btnEnd.classList.add('btn-ring-normal') 
-            btnNext.classList.remove('btn-ring-inactive')
-            btnNext.classList.add('btn-ring-normal')
-            btnPrev.classList.add('btn-ring-normal')
-            btnStart.classList.add('btn-ring-normal')
-            break;
+                btnEnd.classList.remove('btn-ring-inactive')
+                btnEnd.classList.add('btn-ring-normal')
+                btnNext.classList.remove('btn-ring-inactive')
+                btnNext.classList.add('btn-ring-normal')
+                btnPrev.classList.add('btn-ring-normal')
+                btnStart.classList.add('btn-ring-normal')
+                break;
 
             case 4:
-            btnEnd.classList.remove('btn-ring-inactive')
-            btnEnd.classList.add('btn-ring-normal') 
-            btnNext.classList.remove('btn-ring-inactive')
-            btnNext.classList.add('btn-ring-normal')
-            btnPrev.classList.add('btn-ring-normal')
-            btnStart.classList.add('btn-ring-normal')
-            break;
+                btnEnd.classList.remove('btn-ring-inactive')
+                btnEnd.classList.add('btn-ring-normal')
+                btnNext.classList.remove('btn-ring-inactive')
+                btnNext.classList.add('btn-ring-normal')
+                btnPrev.classList.add('btn-ring-normal')
+                btnStart.classList.add('btn-ring-normal')
+                break;
 
             case 3:
-            btnEnd.classList.remove('btn-ring-inactive')
-            btnEnd.classList.add('btn-ring-normal') 
-            btnNext.classList.remove('btn-ring-inactive')
-            btnNext.classList.add('btn-ring-normal')
-            btnPrev.classList.add('btn-ring-normal')
-            btnStart.classList.add('btn-ring-normal')
-            break;
+                btnEnd.classList.remove('btn-ring-inactive')
+                btnEnd.classList.add('btn-ring-normal')
+                btnNext.classList.remove('btn-ring-inactive')
+                btnNext.classList.add('btn-ring-normal')
+                btnPrev.classList.add('btn-ring-normal')
+                btnStart.classList.add('btn-ring-normal')
+                break;
 
             case 2:
-            btnEnd.classList.remove('btn-ring-inactive')
-            btnEnd.classList.add('btn-ring-normal') 
-            btnNext.classList.remove('btn-ring-inactive')
-            btnNext.classList.add('btn-ring-normal')
-            btnPrev.classList.add('btn-ring-normal')
-            btnStart.classList.add('btn-ring-normal')
-            break;
+                btnEnd.classList.remove('btn-ring-inactive')
+                btnEnd.classList.add('btn-ring-normal')
+                btnNext.classList.remove('btn-ring-inactive')
+                btnNext.classList.add('btn-ring-normal')
+                btnPrev.classList.add('btn-ring-normal')
+                btnStart.classList.add('btn-ring-normal')
+                break;
 
             case 1:
-            btnStart.classList.add('btn-ring-inactive')
-            btnStart.classList.remove('btn-ring-normal') 
-            btnPrev.classList.add('btn-ring-inactive')
-            btnPrev.classList.remove('btn-ring-normal')
-            btnEnd.classList.remove('btn-ring-inactive')
-            btnEnd.classList.add('btn-ring-normal') 
-            btnNext.classList.remove('btn-ring-inactive')
-            btnNext.classList.add('btn-ring-normal')
-            break;
+                btnStart.classList.add('btn-ring-inactive')
+                btnStart.classList.remove('btn-ring-normal')
+                btnPrev.classList.add('btn-ring-inactive')
+                btnPrev.classList.remove('btn-ring-normal')
+                btnEnd.classList.remove('btn-ring-inactive')
+                btnEnd.classList.add('btn-ring-normal')
+                btnNext.classList.remove('btn-ring-inactive')
+                btnNext.classList.add('btn-ring-normal')
+                break;
         }
     })
 
@@ -469,4 +475,13 @@ document.addEventListener("DOMContentLoaded", function () {
         startInvactive();
     })
 
+    let w = window.innerWidth;
+    window.addEventListener('resize', function() {
+    w = window.innerWidth;
+    })
+
+
+
+
 });
+

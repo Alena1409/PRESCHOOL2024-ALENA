@@ -148,12 +148,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return pet.parasites
     });
 
-    //const random = (max, min) => Math.floor(Math.random() * (max - min + 1)) + min;
-
+    
     const createCards = (i) => {
-
-        // const random = Math.floor(Math.random() * (max - min + 1)) + min;
-        //let rondNumber = Math.floor(Math.random() * 8)
 
         const card = document.createElement('div');
         card.classList.add('friends-card');
@@ -256,11 +252,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById('body').classList.remove('stop-scroll');
             }
         })
-
         return card;
     }
 
-    const a = () => {
+    const initializeSlider = () => {
 
         let rondNumber = Math.floor(Math.random() * 5)
 
@@ -313,7 +308,7 @@ document.addEventListener("DOMContentLoaded", function () {
             cardsRight.append(createCards(0))
         }
     }
-    a();
+    initializeSlider();
 
     const btnLeft = document.querySelector('.btn-left');
     const btnRight = document.querySelector('.btn-right');
