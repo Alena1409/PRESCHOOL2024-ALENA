@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+
+
     // burger-menu
 
     document.getElementById('burger').addEventListener('click', function () {
@@ -148,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return pet.parasites
     });
 
-    
+
     const createCards = (i) => {
 
         const card = document.createElement('div');
@@ -255,95 +257,136 @@ document.addEventListener("DOMContentLoaded", function () {
         return card;
     }
 
-    const initializeSlider = () => {
+    const card0 = createCards(0);
+    const card1 = createCards(1);
+    const card2 = createCards(2);
+    const card3 = createCards(3);
+    const card4 = createCards(4);
+    const card5 = createCards(5);
+    const card6 = createCards(6);
+    const card7 = createCards(7);
+    const card8 = createCards(0);
 
-        let rondNumber = Math.floor(Math.random() * 5)
+    const card9 = createCards(6);
+    const card10 = createCards(7);
+    const card11 = createCards(5);
 
-        for (let i = rondNumber; i < (rondNumber + 3); i++) {
-            console.log(rondNumber)
-            const card = createCards(i);
-            cardsActive.append(card);
-        }
-        if (rondNumber == 0) {
-            cardsLeft.append(createCards(3))
-            cardsLeft.append(createCards(4))
-            cardsLeft.append(createCards(5))
-            cardsRight.append(createCards(6))
-            cardsRight.append(createCards(7))
-            cardsRight.append(createCards(3))
-        } else if (rondNumber == 1) {
-            cardsLeft.append(createCards(4))
-            cardsLeft.append(createCards(5))
-            cardsLeft.append(createCards(6))
-            cardsRight.append(createCards(7))
-            cardsRight.append(createCards(0))
-            cardsRight.append(createCards(4))
-        } else if (rondNumber == 2) {
-            cardsLeft.append(createCards(5))
-            cardsLeft.append(createCards(6))
-            cardsLeft.append(createCards(7))
-            cardsRight.append(createCards(0))
-            cardsRight.append(createCards(1))
-            cardsRight.append(createCards(5))
-        } else if (rondNumber == 3) {
-            cardsLeft.append(createCards(6))
-            cardsLeft.append(createCards(7))
-            cardsLeft.append(createCards(0))
-            cardsRight.append(createCards(1))
-            cardsRight.append(createCards(2))
-            cardsRight.append(createCards(6))
-        } else if (rondNumber == 4) {
-            cardsLeft.append(createCards(7))
-            cardsLeft.append(createCards(0))
-            cardsLeft.append(createCards(1))
-            cardsRight.append(createCards(2))
-            cardsRight.append(createCards(3))
-            cardsRight.append(createCards(7))
-        } else if (rondNumber == 5) {
-            cardsLeft.append(createCards(0))
-            cardsLeft.append(createCards(1))
-            cardsLeft.append(createCards(2))
-            cardsRight.append(createCards(3))
-            cardsRight.append(createCards(4))
-            cardsRight.append(createCards(0))
-        }
+
+    const card12 = createCards(1);
+    const card13 = createCards(2);
+    const card14 = createCards(3);
+
+
+    const card15 = createCards(0);
+    const card16 = createCards(1);
+    const card17 = createCards(2);
+
+    const card18 = createCards(6);
+    const card19 = createCards(7);
+    const card20 = createCards(4);
+
+    const arr1 = [card0, card1, card2]
+    const arr2 = [card3, card4, card5]
+    const arr3 = [card6, card7, card8]
+    const arr4 = [card9, card10, card11]
+    const arr5 = [card12, card13, card14]
+    const arr6 = [card15, card16, card17]
+    const arr7 = [card18, card19, card20]
+
+    arr1.sort(() => Math.random() - 0.5);
+    arr2.sort(() => Math.random() - 0.5);
+    arr3.sort(() => Math.random() - 0.5);
+    
+    
+
+
+    let w = window.innerWidth;
+
+
+    for (let value of arr1) {
+        cardsLeft.append(value)
     }
-    initializeSlider();
+
+    for (let value of arr2) {
+        cardsActive.append(value)
+    }
+
+    for (let value of arr3) {
+        cardsRight.append(value)
+    }
+
+    window.addEventListener('resize', function () {
+        w = window.innerWidth;
+
+
+        if (w <= 1200) {
+            arr1.pop()
+            arr2.pop()
+            arr3.pop()
+            arr4.pop()
+            arr5.pop()
+        } else if (w <= 750) {
+            arr1.pop()
+            arr2.pop()
+            arr3.pop()
+            arr4.pop()
+            arr5.pop()
+        }
+    });
+
+
+    //  let rondNumber = Math.floor(Math.random() * 5)
+
 
     const btnLeft = document.querySelector('.btn-left');
     const btnRight = document.querySelector('.btn-right');
     const slider = document.querySelector('.slider');
 
+    countL = 0;
+    countR = 0;
+
     const transitionLeft = () => {
         slider.classList.add('transition-left');
         btnLeft.removeEventListener('click', transitionLeft);
         btnRight.removeEventListener('click', transitionRight);
+        arr4.sort(() => Math.random() - 0.5);
+        arr6.sort(() => Math.random() - 0.5);
+        countL++;
     }
     const transitionRight = () => {
         slider.classList.add('transition-right');
         btnRight.removeEventListener('click', transitionRight);
-        btnLeft.removeEventListener('click', transitionLeft)
+        btnLeft.removeEventListener('click', transitionLeft);
+        arr5.sort(() => Math.random() - 0.5);
+        arr7.sort(() => Math.random() - 0.5);
+        countR++;
     }
 
 
     btnLeft.addEventListener('click', transitionLeft);
     btnRight.addEventListener('click', transitionRight)
 
+    
+   
+
     slider.addEventListener("animationend", (event) => {
 
-        let rondNumber = Math.floor(Math.random() * 5)
-
         if (event.animationName === "move-left") {
-
 
             slider.classList.remove('transition-left');
 
             cardsActive.innerHTML = cardsLeft.innerHTML;
-            
-            cardsLeft.innerHTML = "";
-            for (let i = rondNumber; i < rondNumber + 3; i++) {
-                const card = createCards(i);
-                cardsLeft.append(card)
+        
+            cardsLeft.innerHTML = " ";
+
+            if (countL % 2) {
+                for (let value of arr4) {
+                    cardsLeft.append(value)
+                }
+            } else {
+                for (let value of arr6) {
+                    cardsLeft.append(value)
+                }
             }
 
 
@@ -354,9 +397,17 @@ document.addEventListener("DOMContentLoaded", function () {
             cardsActive.innerHTML = cardsRight.innerHTML;
 
             cardsRight.innerHTML = "";
-            for (let i = rondNumber; i < rondNumber + 3; i++) {
-                const card = createCards(i);
-                cardsRight.append(card)
+
+            if (countR % 2) {
+                for (let value of arr5) {
+                    cardsRight.append(value)
+                }
+
+            } else {
+                for (let value of arr7) {
+                    cardsRight.append(value)
+                }
+
             }
 
         }

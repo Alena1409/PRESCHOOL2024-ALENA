@@ -869,6 +869,29 @@ li::marker {
     .modal-item {
         line-height: 161%;        
     }
+
+    /* ////////////// */
+
+    .slider {
+        left: -890px;
+    }
+
+    @keyframes move-left {
+        from {left: -580px;}
+        to {left: 0px;}
+    }
+    
+    @keyframes move-right {
+        from {left: -580px;}
+        to {left: -1160px;}
+    }
+
+    .cards{
+        display: flex;
+        gap: 40px;
+    }
+    
+
 }
 
 @media (max-width: 805px) {
@@ -1072,6 +1095,26 @@ li::marker {
     }
     .btn-arrow {
         margin: 19px 40px 0 ;
+    }
+
+ /* ///////////////////////////// */
+
+    .slider {
+        left: -270px;
+    }
+
+    @keyframes move-left {
+        from {left: -270px;}
+        to {left: 0px;}
+    }
+    
+    @keyframes move-right {
+        from {left: 0px;}
+        to {left: -270px;}
+    }
+
+    .cards{
+        gap: 0px;
     }
 }
 

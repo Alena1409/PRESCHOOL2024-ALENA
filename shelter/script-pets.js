@@ -284,44 +284,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const btn1 = document.querySelector('.btn-1')
 
 
-
-/* пробую пагинацию
-    const cardsOnPage = 8;
-
-    btn1.innerHTML = 1;
-
-    /* 
-    1 - 0 8
-    2 - 8 16
-    3 - 16 24
-    4 - 24 32
-    5 - 32 40
-    6 - 40 48
-
-
-    /*
-   
-    const arrPets = createArrPets(6);
-
-   let pageNumber = Number(btn1.innerHTML);
-        let start = (pageNumber - 1) * cardsOnPage;
-        let end = start + cardsOnPage;
-   
-
-
-    btnNext.addEventListener('click', () => { 
-
-        let notes = arrPets.slice(start, end)
-
-        console.log(notes);
-  
-        
-
-    })
-    */
-
-
-
     let topUp = 0;
     let clicks = Number(btn1.innerHTML);
 
