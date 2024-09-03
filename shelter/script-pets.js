@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const btn1 = document.querySelector('.btn-1');
 
     let w = window.innerWidth;
+    let topUp = 0;
+    let clicks = Number(btn1.innerHTML);
 
 
     const closeMenu = () => {
@@ -281,263 +283,261 @@ document.addEventListener("DOMContentLoaded", function () {
         };
     };
 
-    window.addEventListener('resize', function () {
-        w = window.innerWidth;
 
-        let topUp = 0;
-        let clicks = Number(btn1.innerHTML);
+    const funClick = () => {
+        if (w > 768) {
+            if (clicks === 6) {
 
-        const funClick = () => {
-            if (w > 768) {
-                if (clicks === 6) {
+                btnEnd.classList.add('btn-ring-inactive')
+                btnEnd.classList.remove('btn-ring-normal')
+                btnNext.classList.add('btn-ring-inactive')
+                btnNext.classList.remove('btn-ring-normal')
 
-                    btnEnd.classList.add('btn-ring-inactive')
-                    btnEnd.classList.remove('btn-ring-normal')
-                    btnNext.classList.add('btn-ring-inactive')
-                    btnNext.classList.remove('btn-ring-normal')
+                btnStart.classList.remove('btn-ring-inactive')
+                btnStart.classList.add('btn-ring-normal')
+                btnPrev.classList.remove('btn-ring-inactive')
+                btnPrev.classList.add('btn-ring-normal')
 
-                    btnStart.classList.remove('btn-ring-inactive')
-                    btnStart.classList.add('btn-ring-normal')
-                    btnPrev.classList.remove('btn-ring-inactive')
-                    btnPrev.classList.add('btn-ring-normal')
+            } else if (clicks === 1) {
 
-                } else if (clicks === 1) {
+                btnStart.classList.add('btn-ring-inactive')
+                btnStart.classList.remove('btn-ring-normal')
+                btnPrev.classList.add('btn-ring-inactive')
+                btnPrev.classList.remove('btn-ring-normal')
 
-                    btnStart.classList.add('btn-ring-inactive')
-                    btnStart.classList.remove('btn-ring-normal')
-                    btnPrev.classList.add('btn-ring-inactive')
-                    btnPrev.classList.remove('btn-ring-normal')
+                btnEnd.classList.remove('btn-ring-inactive')
+                btnEnd.classList.add('btn-ring-normal')
+                btnNext.classList.remove('btn-ring-inactive')
+                btnNext.classList.add('btn-ring-normal')
 
-                    btnEnd.classList.remove('btn-ring-inactive')
-                    btnEnd.classList.add('btn-ring-normal')
-                    btnNext.classList.remove('btn-ring-inactive')
-                    btnNext.classList.add('btn-ring-normal')
+            } else if (clicks !== 6 && clicks !== 1) {
 
-                } else if (clicks !== 6 && clicks !== 1) {
+                btnEnd.classList.remove('btn-ring-inactive')
+                btnEnd.classList.add('btn-ring-normal')
+                btnNext.classList.remove('btn-ring-inactive')
+                btnNext.classList.add('btn-ring-normal')
 
-                    btnEnd.classList.remove('btn-ring-inactive')
-                    btnEnd.classList.add('btn-ring-normal')
-                    btnNext.classList.remove('btn-ring-inactive')
-                    btnNext.classList.add('btn-ring-normal')
-
-                    btnStart.classList.remove('btn-ring-inactive')
-                    btnStart.classList.add('btn-ring-normal')
-                    btnPrev.classList.remove('btn-ring-inactive')
-                    btnPrev.classList.add('btn-ring-normal')
-                }
-            } else if (w > 320) {
-                if (clicks === 8) {
-
-                    btnEnd.classList.add('btn-ring-inactive')
-                    btnEnd.classList.remove('btn-ring-normal')
-                    btnNext.classList.add('btn-ring-inactive')
-                    btnNext.classList.remove('btn-ring-normal')
-
-                    btnStart.classList.remove('btn-ring-inactive')
-                    btnStart.classList.add('btn-ring-normal')
-                    btnPrev.classList.remove('btn-ring-inactive')
-                    btnPrev.classList.add('btn-ring-normal')
-
-                } else if (clicks === 1) {
-
-                    btnStart.classList.add('btn-ring-inactive')
-                    btnStart.classList.remove('btn-ring-normal')
-                    btnPrev.classList.add('btn-ring-inactive')
-                    btnPrev.classList.remove('btn-ring-normal')
-
-                    btnEnd.classList.remove('btn-ring-inactive')
-                    btnEnd.classList.add('btn-ring-normal')
-                    btnNext.classList.remove('btn-ring-inactive')
-                    btnNext.classList.add('btn-ring-normal')
-
-                } else if (clicks !== 8 && clicks !== 1) {
-
-                    btnEnd.classList.remove('btn-ring-inactive')
-                    btnEnd.classList.add('btn-ring-normal')
-                    btnNext.classList.remove('btn-ring-inactive')
-                    btnNext.classList.add('btn-ring-normal')
-
-                    btnStart.classList.remove('btn-ring-inactive')
-                    btnStart.classList.add('btn-ring-normal')
-                    btnPrev.classList.remove('btn-ring-inactive')
-                    btnPrev.classList.add('btn-ring-normal')
-                }
-            } else if (w > 220) {
-                if (clicks === 16) {
-
-                    btnEnd.classList.add('btn-ring-inactive')
-                    btnEnd.classList.remove('btn-ring-normal')
-                    btnNext.classList.add('btn-ring-inactive')
-                    btnNext.classList.remove('btn-ring-normal')
-
-                    btnStart.classList.remove('btn-ring-inactive')
-                    btnStart.classList.add('btn-ring-normal')
-                    btnPrev.classList.remove('btn-ring-inactive')
-                    btnPrev.classList.add('btn-ring-normal')
-
-                } else if (clicks === 1) {
-
-                    btnStart.classList.add('btn-ring-inactive')
-                    btnStart.classList.remove('btn-ring-normal')
-                    btnPrev.classList.add('btn-ring-inactive')
-                    btnPrev.classList.remove('btn-ring-normal')
-
-                    btnEnd.classList.remove('btn-ring-inactive')
-                    btnEnd.classList.add('btn-ring-normal')
-                    btnNext.classList.remove('btn-ring-inactive')
-                    btnNext.classList.add('btn-ring-normal')
-
-                } else if (clicks !== 16 && clicks !== 1) {
-
-                    btnEnd.classList.remove('btn-ring-inactive')
-                    btnEnd.classList.add('btn-ring-normal')
-                    btnNext.classList.remove('btn-ring-inactive')
-                    btnNext.classList.add('btn-ring-normal')
-
-                    btnStart.classList.remove('btn-ring-inactive')
-                    btnStart.classList.add('btn-ring-normal')
-                    btnPrev.classList.remove('btn-ring-inactive')
-                    btnPrev.classList.add('btn-ring-normal')
-                }
+                btnStart.classList.remove('btn-ring-inactive')
+                btnStart.classList.add('btn-ring-normal')
+                btnPrev.classList.remove('btn-ring-inactive')
+                btnPrev.classList.add('btn-ring-normal')
             }
+        } else if (w > 320) {
+            if (clicks === 8) {
 
+                btnEnd.classList.add('btn-ring-inactive')
+                btnEnd.classList.remove('btn-ring-normal')
+                btnNext.classList.add('btn-ring-inactive')
+                btnNext.classList.remove('btn-ring-normal')
+
+                btnStart.classList.remove('btn-ring-inactive')
+                btnStart.classList.add('btn-ring-normal')
+                btnPrev.classList.remove('btn-ring-inactive')
+                btnPrev.classList.add('btn-ring-normal')
+
+            } else if (clicks === 1) {
+
+                btnStart.classList.add('btn-ring-inactive')
+                btnStart.classList.remove('btn-ring-normal')
+                btnPrev.classList.add('btn-ring-inactive')
+                btnPrev.classList.remove('btn-ring-normal')
+
+                btnEnd.classList.remove('btn-ring-inactive')
+                btnEnd.classList.add('btn-ring-normal')
+                btnNext.classList.remove('btn-ring-inactive')
+                btnNext.classList.add('btn-ring-normal')
+
+            } else if (clicks !== 8 && clicks !== 1) {
+
+                btnEnd.classList.remove('btn-ring-inactive')
+                btnEnd.classList.add('btn-ring-normal')
+                btnNext.classList.remove('btn-ring-inactive')
+                btnNext.classList.add('btn-ring-normal')
+
+                btnStart.classList.remove('btn-ring-inactive')
+                btnStart.classList.add('btn-ring-normal')
+                btnPrev.classList.remove('btn-ring-inactive')
+                btnPrev.classList.add('btn-ring-normal')
+            }
+        } else if (w > 220) {
+            if (clicks === 16) {
+
+                btnEnd.classList.add('btn-ring-inactive')
+                btnEnd.classList.remove('btn-ring-normal')
+                btnNext.classList.add('btn-ring-inactive')
+                btnNext.classList.remove('btn-ring-normal')
+
+                btnStart.classList.remove('btn-ring-inactive')
+                btnStart.classList.add('btn-ring-normal')
+                btnPrev.classList.remove('btn-ring-inactive')
+                btnPrev.classList.add('btn-ring-normal')
+
+            } else if (clicks === 1) {
+
+                btnStart.classList.add('btn-ring-inactive')
+                btnStart.classList.remove('btn-ring-normal')
+                btnPrev.classList.add('btn-ring-inactive')
+                btnPrev.classList.remove('btn-ring-normal')
+
+                btnEnd.classList.remove('btn-ring-inactive')
+                btnEnd.classList.add('btn-ring-normal')
+                btnNext.classList.remove('btn-ring-inactive')
+                btnNext.classList.add('btn-ring-normal')
+
+            } else if (clicks !== 16 && clicks !== 1) {
+
+                btnEnd.classList.remove('btn-ring-inactive')
+                btnEnd.classList.add('btn-ring-normal')
+                btnNext.classList.remove('btn-ring-inactive')
+                btnNext.classList.add('btn-ring-normal')
+
+                btnStart.classList.remove('btn-ring-inactive')
+                btnStart.classList.add('btn-ring-normal')
+                btnPrev.classList.remove('btn-ring-inactive')
+                btnPrev.classList.add('btn-ring-normal')
+            }
         }
 
-        funClick();
+    }
 
-        btnNext.addEventListener('click', function () {
+    funClick();
 
-            if (w > 768) {
-                topUp = topUp + SCROLL_LARGE;
+    btnNext.addEventListener('click', function () {
 
-                if (topUp > MAX_SCROLL_LARGE) {
-                    topUp = MAX_SCROLL_LARGE;
-                };
-            } else if (w > 320) {
-                topUp = topUp + SCROLL_MEDIUM;
+        if (w > 768) {
+            topUp = topUp + SCROLL_LARGE;
 
-                if (topUp > MAX_SCROLL_MEDIUM) {
-                    topUp = MAX_SCROLL_MEDIUM;
-                };
-            } else if (w > 220) {
-                topUp = topUp + SCROLL_MEDIUM;
+            if (topUp > MAX_SCROLL_LARGE) {
+                topUp = MAX_SCROLL_LARGE;
+            };
+        } else if (w > 320) {
+            topUp = topUp + SCROLL_MEDIUM;
 
-                if (topUp > MAX_SCROLL_SMALL) {
-                    topUp = MAX_SCROLL_SMALL;
-                };
-            }
+            if (topUp > MAX_SCROLL_MEDIUM) {
+                topUp = MAX_SCROLL_MEDIUM;
+            };
+        } else if (w > 220) {
+            topUp = topUp + SCROLL_MEDIUM;
 
-            cardsContainerRow.style.top = -topUp + 'px';
+            if (topUp > MAX_SCROLL_SMALL) {
+                topUp = MAX_SCROLL_SMALL;
+            };
+        }
 
-            if (w > 768) {
-                if (clicks < 6) {
-                    clicks += 1;
-                } else {
-                    clicks = 6;
-                }
-            } else if (w > 320) {
-                if (clicks < 8) {
-                    clicks += 1;
-                } else {
-                    clicks = 8;
-                }
+        cardsContainerRow.style.top = -topUp + 'px';
 
-            } else if (w > 220) {
-                if (clicks < 16) {
-                    clicks += 1;
-                } else {
-                    clicks = 16;
-                }
-            }
-
-            btn1.innerHTML = clicks;
-            funClick();
-
-        })
-
-        btnPrev.addEventListener('click', function () {
-
-            if (w > 768) {
-                topUp = topUp - SCROLL_LARGE;
-                if (topUp < 0) {
-                    topUp = 0;
-                };
-            } else if (w > 320) {
-                topUp = topUp - SCROLL_MEDIUM;
-                if (topUp < 0) {
-                    topUp = 0;
-                };
-            }
-
-            cardsContainerRow.style.top = -topUp + 'px';
-
-            if (clicks > 1) {
-                clicks -= 1;
+        if (w > 768) {
+            if (clicks < 6) {
+                clicks += 1;
             } else {
-                clicks = 1;
-            }
-
-            btn1.innerHTML = clicks;
-            funClick();
-        })
-
-        btnEnd.addEventListener('click', function () {
-
-            if (w > 768) {
-                topUp = topUp + MAX_SCROLL_LARGE;
-                if (topUp > MAX_SCROLL_LARGE) {
-                    topUp = MAX_SCROLL_LARGE;
-                };
-            } else if (w > 320) {
-                topUp = topUp + MAX_SCROLL_MEDIUM;
-                if (topUp > MAX_SCROLL_MEDIUM) {
-                    topUp = MAX_SCROLL_MEDIUM;
-                };
-            } else if (w > 220) {
-                topUp = topUp + MAX_SCROLL_SMALL;
-                if (topUp > MAX_SCROLL_SMALL) {
-                    topUp = MAX_SCROLL_SMALL;
-                };
-            }
-
-            cardsContainerRow.style.top = -topUp + 'px';
-
-            if (w > 768) {
                 clicks = 6;
-            } else if (w > 320) {
+            }
+        } else if (w > 320) {
+            if (clicks < 8) {
+                clicks += 1;
+            } else {
                 clicks = 8;
-            } else if (w > 220) {
+            }
+
+        } else if (w > 220) {
+            if (clicks < 16) {
+                clicks += 1;
+            } else {
                 clicks = 16;
             }
+        }
 
-            btn1.innerHTML = clicks;
-            funClick();
-        })
+        btn1.innerHTML = clicks;
+        funClick();
 
-        btnStart.addEventListener('click', function () {
-
-            if (w > 768) {
-                topUp = topUp - MAX_SCROLL_LARGE;
-                if (topUp < 0) {
-                    topUp = 0;
-                };
-            } else if (w > 320) {
-                topUp = topUp - MAX_SCROLL_MEDIUM;
-                if (topUp < 0) {
-                    topUp = 0;
-                };
-            } else if (w > 220) {
-                topUp = topUp - MAX_SCROLL_SMALL;
-                if (topUp < 0) {
-                    topUp = 0;
-                };
-            }
-
-            cardsContainerRow.style.top = -topUp + 'px';
-            clicks = 1;
-            btn1.innerHTML = clicks;
-            funClick();
-        })
     })
+
+    btnPrev.addEventListener('click', function () {
+
+        if (w > 768) {
+            topUp = topUp - SCROLL_LARGE;
+            if (topUp < 0) {
+                topUp = 0;
+            };
+        } else if (w > 320) {
+            topUp = topUp - SCROLL_MEDIUM;
+            if (topUp < 0) {
+                topUp = 0;
+            };
+        }
+
+        cardsContainerRow.style.top = -topUp + 'px';
+
+        if (clicks > 1) {
+            clicks -= 1;
+        } else {
+            clicks = 1;
+        }
+
+        btn1.innerHTML = clicks;
+        funClick();
+    })
+
+    btnEnd.addEventListener('click', function () {
+
+        if (w > 768) {
+            topUp = topUp + MAX_SCROLL_LARGE;
+            if (topUp > MAX_SCROLL_LARGE) {
+                topUp = MAX_SCROLL_LARGE;
+            };
+        } else if (w > 320) {
+            topUp = topUp + MAX_SCROLL_MEDIUM;
+            if (topUp > MAX_SCROLL_MEDIUM) {
+                topUp = MAX_SCROLL_MEDIUM;
+            };
+        } else if (w > 220) {
+            topUp = topUp + MAX_SCROLL_SMALL;
+            if (topUp > MAX_SCROLL_SMALL) {
+                topUp = MAX_SCROLL_SMALL;
+            };
+        }
+
+        cardsContainerRow.style.top = -topUp + 'px';
+
+        if (w > 768) {
+            clicks = 6;
+        } else if (w > 320) {
+            clicks = 8;
+        } else if (w > 220) {
+            clicks = 16;
+        }
+
+        btn1.innerHTML = clicks;
+        funClick();
+    })
+
+    btnStart.addEventListener('click', function () {
+
+        if (w > 768) {
+            topUp = topUp - MAX_SCROLL_LARGE;
+            if (topUp < 0) {
+                topUp = 0;
+            };
+        } else if (w > 320) {
+            topUp = topUp - MAX_SCROLL_MEDIUM;
+            if (topUp < 0) {
+                topUp = 0;
+            };
+        } else if (w > 220) {
+            topUp = topUp - MAX_SCROLL_SMALL;
+            if (topUp < 0) {
+                topUp = 0;
+            };
+        }
+
+        cardsContainerRow.style.top = -topUp + 'px';
+        clicks = 1;
+        btn1.innerHTML = clicks;
+        funClick();
+    })
+
+    window.addEventListener('resize', function () {
+        w = window.innerWidth;
+    });
 });
 
