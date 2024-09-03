@@ -1,26 +1,45 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    const SCROLL_LARGE = 930;
+    const SCROLL_MEDIUM = 1395;
+    const MAX_SCROLL_LARGE = 4650;
+    const MAX_SCROLL_MEDIUM = 9765;
+    const MAX_SCROLL_SMALL = 20925;
+
+    const body = document.getElementById('body');
+    const grey = document.getElementById('grey');
+    const header = document.querySelector('.header-pets');
+
+
+    const pop = document.querySelector('.pop');
+    const cardsContainerRow = document.querySelector('.cards-container-row');
+
+    const btnPrev = document.querySelector('.btn-paginator-prev');
+    const btnNext = document.querySelector('.btn-paginator-next');
+    const btnStart = document.querySelector('.btn-paginator-prev-start');
+    const btnEnd = document.querySelector('.btn-paginator-next-end');
+    const btn1 = document.querySelector('.btn-1');
+
+    let w = window.innerWidth;
+
+
+    const closeMenu = () => {
+        header.classList.remove('open');
+        grey.classList.remove('grey');
+        body.classList.remove('stop-scroll');
+    }
+
+    const toggleMenu = () => {
+        header.classList.toggle('open');
+        grey.classList.toggle('grey');
+        body.classList.toggle('stop-scroll');
+    }
+
     // burger-menu
+    document.getElementById('burger-dark').addEventListener('click', toggleMenu);
+    grey.addEventListener('click', closeMenu);
+    document.querySelectorAll('.nav-menu-link').forEach(item => { item.addEventListener('click', closeMenu) });
 
-    document.getElementById('burger-dark').addEventListener('click', function () {
-        document.querySelector('.header-pets').classList.toggle('open');
-        document.getElementById('grey').classList.toggle('grey');
-        document.getElementById('body').classList.toggle('stop-scroll');
-
-        document.getElementById('grey').addEventListener('click', function () {
-            document.querySelector('header').classList.remove('open');
-            document.getElementById('grey').classList.remove('grey');
-            document.getElementById('body').classList.remove('stop-scroll');
-        });
-
-        document.querySelectorAll('.nav-menu-link').forEach(function (item) {
-            item.addEventListener('click', function () {
-                document.querySelector('header').classList.remove('open');
-                document.getElementById('grey').classList.remove('grey');
-                document.getElementById('body').classList.remove('stop-scroll');
-            });
-        });
-    });
 
     //данные по питомцам
     const pets = [
@@ -113,10 +132,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["lice", "fleas"]
         }
     ];
-
-
-    const pop = document.querySelector('.pop');
-    const cardsContainerRow = document.querySelector('.cards-container-row')
 
     const namePets = pets.map(pet => {
         return pet.name
@@ -252,198 +267,277 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    // const arr = [];
+    for (let i = 0; i < 6; i++) {
 
-    const createArrPets = (repeat, a) => { //repeat - сколько раз создать группу животных; a - сколько подтянуть животных 7 животных - ставлю 8
+        const arr = [];
 
-        for (let i = 0; i < repeat; i++) {
-            
-            const arr = [];
+        for (let i = 0; i < 8; i++) {
 
-            for (let i = 0; i < a; i++) {
-                
-                const card = createCards(i);
-                
-                arr.push(card);
-                arr.sort(() => Math.random() - 0.5);
-                arr.forEach(pet => cardsContainerRow.append(pet));
-            };
+            const card = createCards(i);
+
+            arr.push(card);
+            arr.sort(() => Math.random() - 0.5);
+            arr.forEach(pet => cardsContainerRow.append(pet));
         };
-
     };
 
+    window.addEventListener('resize', function () {
+        w = window.innerWidth;
 
-    createArrPets(6, 8);
+        let topUp = 0;
+        let clicks = Number(btn1.innerHTML);
 
+        const funClick = () => {
+            if (w > 768) {
+                if (clicks === 6) {
 
+                    btnEnd.classList.add('btn-ring-inactive')
+                    btnEnd.classList.remove('btn-ring-normal')
+                    btnNext.classList.add('btn-ring-inactive')
+                    btnNext.classList.remove('btn-ring-normal')
 
-    const btnPrev = document.querySelector('.btn-paginator-prev')
-    const btnNext = document.querySelector('.btn-paginator-next')
-    const btnStart = document.querySelector('.btn-paginator-prev-start')
-    const btnEnd = document.querySelector('.btn-paginator-next-end')
-    const btn1 = document.querySelector('.btn-1')
+                    btnStart.classList.remove('btn-ring-inactive')
+                    btnStart.classList.add('btn-ring-normal')
+                    btnPrev.classList.remove('btn-ring-inactive')
+                    btnPrev.classList.add('btn-ring-normal')
 
+                } else if (clicks === 1) {
 
-    let topUp = 0;
-    let clicks = Number(btn1.innerHTML);
+                    btnStart.classList.add('btn-ring-inactive')
+                    btnStart.classList.remove('btn-ring-normal')
+                    btnPrev.classList.add('btn-ring-inactive')
+                    btnPrev.classList.remove('btn-ring-normal')
 
-    const endInvactive = () => {
-        btnEnd.classList.add('btn-ring-inactive')
-        btnNext.classList.add('btn-ring-inactive')
-        btnEnd.classList.remove('btn-ring-normal')
-        btnNext.classList.remove('btn-ring-normal')
+                    btnEnd.classList.remove('btn-ring-inactive')
+                    btnEnd.classList.add('btn-ring-normal')
+                    btnNext.classList.remove('btn-ring-inactive')
+                    btnNext.classList.add('btn-ring-normal')
 
+                } else if (clicks !== 6 && clicks !== 1) {
 
-        btnPrev.classList.remove('btn-ring-inactive')
-        btnStart.classList.remove('btn-ring-inactive')
-        btnPrev.classList.remove('btn-ring-normal')
-        btnStart.classList.remove('btn-ring-normal')
-    }
+                    btnEnd.classList.remove('btn-ring-inactive')
+                    btnEnd.classList.add('btn-ring-normal')
+                    btnNext.classList.remove('btn-ring-inactive')
+                    btnNext.classList.add('btn-ring-normal')
 
-    const startInvactive = () => {
-        btnStart.classList.add('btn-ring-inactive')
-        btnPrev.classList.add('btn-ring-inactive')
-        btnStart.classList.remove('btn-ring-normal')
-        btnPrev.classList.remove('btn-ring-normal')
+                    btnStart.classList.remove('btn-ring-inactive')
+                    btnStart.classList.add('btn-ring-normal')
+                    btnPrev.classList.remove('btn-ring-inactive')
+                    btnPrev.classList.add('btn-ring-normal')
+                }
+            } else if (w > 320) {
+                if (clicks === 8) {
 
-        btnEnd.classList.remove('btn-ring-inactive')
-        btnNext.classList.remove('btn-ring-inactive')
-        btnEnd.classList.add('btn-ring-normal')
-        btnNext.classList.add('btn-ring-normal')
-    }
+                    btnEnd.classList.add('btn-ring-inactive')
+                    btnEnd.classList.remove('btn-ring-normal')
+                    btnNext.classList.add('btn-ring-inactive')
+                    btnNext.classList.remove('btn-ring-normal')
 
-    btnNext.addEventListener('click', function () {
+                    btnStart.classList.remove('btn-ring-inactive')
+                    btnStart.classList.add('btn-ring-normal')
+                    btnPrev.classList.remove('btn-ring-inactive')
+                    btnPrev.classList.add('btn-ring-normal')
 
-            topUp = topUp + 930;
+                } else if (clicks === 1) {
 
-            if (topUp > 4650) {
-                topUp = 4650;
-            };
-    
-            
-        cardsContainerRow.style.top = -topUp + 'px';
+                    btnStart.classList.add('btn-ring-inactive')
+                    btnStart.classList.remove('btn-ring-normal')
+                    btnPrev.classList.add('btn-ring-inactive')
+                    btnPrev.classList.remove('btn-ring-normal')
 
-        if (clicks < 6) {
-            clicks += 1;
-        } else {
-            clicks = 6;
+                    btnEnd.classList.remove('btn-ring-inactive')
+                    btnEnd.classList.add('btn-ring-normal')
+                    btnNext.classList.remove('btn-ring-inactive')
+                    btnNext.classList.add('btn-ring-normal')
+
+                } else if (clicks !== 8 && clicks !== 1) {
+
+                    btnEnd.classList.remove('btn-ring-inactive')
+                    btnEnd.classList.add('btn-ring-normal')
+                    btnNext.classList.remove('btn-ring-inactive')
+                    btnNext.classList.add('btn-ring-normal')
+
+                    btnStart.classList.remove('btn-ring-inactive')
+                    btnStart.classList.add('btn-ring-normal')
+                    btnPrev.classList.remove('btn-ring-inactive')
+                    btnPrev.classList.add('btn-ring-normal')
+                }
+            } else if (w > 220) {
+                if (clicks === 16) {
+
+                    btnEnd.classList.add('btn-ring-inactive')
+                    btnEnd.classList.remove('btn-ring-normal')
+                    btnNext.classList.add('btn-ring-inactive')
+                    btnNext.classList.remove('btn-ring-normal')
+
+                    btnStart.classList.remove('btn-ring-inactive')
+                    btnStart.classList.add('btn-ring-normal')
+                    btnPrev.classList.remove('btn-ring-inactive')
+                    btnPrev.classList.add('btn-ring-normal')
+
+                } else if (clicks === 1) {
+
+                    btnStart.classList.add('btn-ring-inactive')
+                    btnStart.classList.remove('btn-ring-normal')
+                    btnPrev.classList.add('btn-ring-inactive')
+                    btnPrev.classList.remove('btn-ring-normal')
+
+                    btnEnd.classList.remove('btn-ring-inactive')
+                    btnEnd.classList.add('btn-ring-normal')
+                    btnNext.classList.remove('btn-ring-inactive')
+                    btnNext.classList.add('btn-ring-normal')
+
+                } else if (clicks !== 16 && clicks !== 1) {
+
+                    btnEnd.classList.remove('btn-ring-inactive')
+                    btnEnd.classList.add('btn-ring-normal')
+                    btnNext.classList.remove('btn-ring-inactive')
+                    btnNext.classList.add('btn-ring-normal')
+
+                    btnStart.classList.remove('btn-ring-inactive')
+                    btnStart.classList.add('btn-ring-normal')
+                    btnPrev.classList.remove('btn-ring-inactive')
+                    btnPrev.classList.add('btn-ring-normal')
+                }
+            }
+
         }
-        btn1.innerHTML = clicks;
 
-        switch (clicks) {
-            case 2:
-                btnStart.classList.remove('btn-ring-inactive')
-                btnStart.classList.add('btn-ring-normal')
-                btnPrev.classList.remove('btn-ring-inactive')
-                btnPrev.classList.add('btn-ring-normal')
-                break;
+        funClick();
 
-            case 6:
-                btnEnd.classList.add('btn-ring-inactive')
-                btnEnd.classList.remove('btn-ring-normal')
-                btnNext.classList.add('btn-ring-inactive')
-                btnNext.classList.remove('btn-ring-normal')
-                btnStart.classList.add('btn-ring-normal')
-                btnPrev.classList.add('btn-ring-normal')
-                break;
-        }
-    })
+        btnNext.addEventListener('click', function () {
 
-    btnPrev.addEventListener('click', function () {
-        topUp = topUp - 930;
-        if (topUp < 0) {
-            topUp = 0;
-        };
-        cardsContainerRow.style.top = -topUp + 'px';
+            if (w > 768) {
+                topUp = topUp + SCROLL_LARGE;
 
-        if (clicks > 1) {
-            clicks -= 1;
-            endInvactive()
-        } else {
+                if (topUp > MAX_SCROLL_LARGE) {
+                    topUp = MAX_SCROLL_LARGE;
+                };
+            } else if (w > 320) {
+                topUp = topUp + SCROLL_MEDIUM;
+
+                if (topUp > MAX_SCROLL_MEDIUM) {
+                    topUp = MAX_SCROLL_MEDIUM;
+                };
+            } else if (w > 220) {
+                topUp = topUp + SCROLL_MEDIUM;
+
+                if (topUp > MAX_SCROLL_SMALL) {
+                    topUp = MAX_SCROLL_SMALL;
+                };
+            }
+
+            cardsContainerRow.style.top = -topUp + 'px';
+
+            if (w > 768) {
+                if (clicks < 6) {
+                    clicks += 1;
+                } else {
+                    clicks = 6;
+                }
+            } else if (w > 320) {
+                if (clicks < 8) {
+                    clicks += 1;
+                } else {
+                    clicks = 8;
+                }
+
+            } else if (w > 220) {
+                if (clicks < 16) {
+                    clicks += 1;
+                } else {
+                    clicks = 16;
+                }
+            }
+
+            btn1.innerHTML = clicks;
+            funClick();
+
+        })
+
+        btnPrev.addEventListener('click', function () {
+
+            if (w > 768) {
+                topUp = topUp - SCROLL_LARGE;
+                if (topUp < 0) {
+                    topUp = 0;
+                };
+            } else if (w > 320) {
+                topUp = topUp - SCROLL_MEDIUM;
+                if (topUp < 0) {
+                    topUp = 0;
+                };
+            }
+
+            cardsContainerRow.style.top = -topUp + 'px';
+
+            if (clicks > 1) {
+                clicks -= 1;
+            } else {
+                clicks = 1;
+            }
+
+            btn1.innerHTML = clicks;
+            funClick();
+        })
+
+        btnEnd.addEventListener('click', function () {
+
+            if (w > 768) {
+                topUp = topUp + MAX_SCROLL_LARGE;
+                if (topUp > MAX_SCROLL_LARGE) {
+                    topUp = MAX_SCROLL_LARGE;
+                };
+            } else if (w > 320) {
+                topUp = topUp + MAX_SCROLL_MEDIUM;
+                if (topUp > MAX_SCROLL_MEDIUM) {
+                    topUp = MAX_SCROLL_MEDIUM;
+                };
+            } else if (w > 220) {
+                topUp = topUp + MAX_SCROLL_SMALL;
+                if (topUp > MAX_SCROLL_SMALL) {
+                    topUp = MAX_SCROLL_SMALL;
+                };
+            }
+
+            cardsContainerRow.style.top = -topUp + 'px';
+
+            if (w > 768) {
+                clicks = 6;
+            } else if (w > 320) {
+                clicks = 8;
+            } else if (w > 220) {
+                clicks = 16;
+            }
+
+            btn1.innerHTML = clicks;
+            funClick();
+        })
+
+        btnStart.addEventListener('click', function () {
+
+            if (w > 768) {
+                topUp = topUp - MAX_SCROLL_LARGE;
+                if (topUp < 0) {
+                    topUp = 0;
+                };
+            } else if (w > 320) {
+                topUp = topUp - MAX_SCROLL_MEDIUM;
+                if (topUp < 0) {
+                    topUp = 0;
+                };
+            } else if (w > 220) {
+                topUp = topUp - MAX_SCROLL_SMALL;
+                if (topUp < 0) {
+                    topUp = 0;
+                };
+            }
+
+            cardsContainerRow.style.top = -topUp + 'px';
             clicks = 1;
-            startInvactive()
-        }
-        btn1.innerHTML = clicks;
-
-        switch (clicks) {
-            case 5:
-                btnEnd.classList.remove('btn-ring-inactive')
-                btnEnd.classList.add('btn-ring-normal')
-                btnNext.classList.remove('btn-ring-inactive')
-                btnNext.classList.add('btn-ring-normal')
-                btnPrev.classList.add('btn-ring-normal')
-                btnStart.classList.add('btn-ring-normal')
-                break;
-
-            case 4:
-                btnEnd.classList.remove('btn-ring-inactive')
-                btnEnd.classList.add('btn-ring-normal')
-                btnNext.classList.remove('btn-ring-inactive')
-                btnNext.classList.add('btn-ring-normal')
-                btnPrev.classList.add('btn-ring-normal')
-                btnStart.classList.add('btn-ring-normal')
-                break;
-
-            case 3:
-                btnEnd.classList.remove('btn-ring-inactive')
-                btnEnd.classList.add('btn-ring-normal')
-                btnNext.classList.remove('btn-ring-inactive')
-                btnNext.classList.add('btn-ring-normal')
-                btnPrev.classList.add('btn-ring-normal')
-                btnStart.classList.add('btn-ring-normal')
-                break;
-
-            case 2:
-                btnEnd.classList.remove('btn-ring-inactive')
-                btnEnd.classList.add('btn-ring-normal')
-                btnNext.classList.remove('btn-ring-inactive')
-                btnNext.classList.add('btn-ring-normal')
-                btnPrev.classList.add('btn-ring-normal')
-                btnStart.classList.add('btn-ring-normal')
-                break;
-
-            case 1:
-                btnStart.classList.add('btn-ring-inactive')
-                btnStart.classList.remove('btn-ring-normal')
-                btnPrev.classList.add('btn-ring-inactive')
-                btnPrev.classList.remove('btn-ring-normal')
-                btnEnd.classList.remove('btn-ring-inactive')
-                btnEnd.classList.add('btn-ring-normal')
-                btnNext.classList.remove('btn-ring-inactive')
-                btnNext.classList.add('btn-ring-normal')
-                break;
-        }
+            btn1.innerHTML = clicks;
+            funClick();
+        })
     })
-
-    btnEnd.addEventListener('click', function () {
-        topUp = topUp + 4650;
-        if (topUp > 4650) {
-            topUp = 4650;
-        };
-        cardsContainerRow.style.top = -topUp + 'px';
-        clicks = 6;
-        btn1.innerHTML = clicks;
-        endInvactive();
-    })
-
-    btnStart.addEventListener('click', function () {
-        topUp = topUp - 4650;
-        if (topUp < 0) {
-            topUp = 0;
-        };
-        cardsContainerRow.style.top = -topUp + 'px';
-        clicks = 1;
-        btn1.innerHTML = clicks;
-        startInvactive();
-    })
-
-    let w = window.innerWidth;
-    window.addEventListener('resize', function() {
-    w = window.innerWidth;
-    })
-
-
-
-
 });
 

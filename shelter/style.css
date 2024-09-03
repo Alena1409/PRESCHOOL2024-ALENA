@@ -721,7 +721,7 @@ li::marker {
     gap: 30px 40px;
     position: relative;
     top: 0;
-    /* transition: all ease 1s; */
+    transition: all ease 1s;
 }
 .nav-friends {
     width: 340px;
