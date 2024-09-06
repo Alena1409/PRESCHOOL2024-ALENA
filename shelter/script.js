@@ -253,57 +253,31 @@ document.addEventListener("DOMContentLoaded", function () {
     shuffle(arr2);
     shuffle(arr3);
 
-    const initialCards = () => {
-        w = window.innerWidth;
-
-        const showElements = (arr, count) => {
-            arr.forEach((element, index) => {
-                if (index < count) {
-                    element.classList.remove('hiden');
-                } else {
-                    element.classList.add('hiden');
-                }
-            });
-        };
-
-        // Очистите все предыдущие скрытые элементы
-        [arr1, arr2, arr3, arr4, arr5].flat().forEach(element => element.classList.remove('hiden'));
-
+    const processCards = (array, container) => {
+        let w = window.innerWidth;
+    
+        let visibleCount = 1; 
         if (w > 1200) {
-            showElements(arr1, 3);
-            showElements(arr2, 3);
-            showElements(arr3, 3);
-            showElements(arr4, 3);
-            showElements(arr5, 3);
-        } else if (w > 768) { // 768px <= w <= 1280px
-            showElements(arr1, 2);
-            showElements(arr2, 2);
-            showElements(arr3, 2);
-            showElements(arr4, 2);
-            showElements(arr5, 2);
-        } else if (w > 320) { // 320px < w <= 768px
-            showElements(arr1, 1);
-            showElements(arr2, 1);
-            showElements(arr3, 1);
-            showElements(arr4, 1);
-            showElements(arr5, 1);
-        } else { // w <= 320px
-            showElements(arr1, 1);
-            showElements(arr2, 1);
-            showElements(arr3, 1);
-            showElements(arr4, 1);
-            showElements(arr5, 1);
+            visibleCount = 3;
+        } else if (w > 768) {
+            visibleCount = 2;
         }
 
-        arr1.forEach(value => cardsLeft.append(value));
-        arr2.forEach(value => cardsActive.append(value));
-        arr3.forEach(value => cardsRight.append(value));
+        container.innerHTML = "";
+    
+        array.forEach((element, index) => {
+            if (index < visibleCount) {
+                element.classList.remove('hiden');
+            } else {
+                element.classList.add('hiden');
+            }
+            container.append(element);
+        });
     };
 
-
-    initialCards()
-
-    window.addEventListener('resize', initialCards);
+    processCards(arr1, cardsLeft);
+    processCards(arr2, cardsActive);
+    processCards(arr3, cardsRight);
 
     countL = 0;
     countR = 0;
@@ -338,13 +312,9 @@ document.addEventListener("DOMContentLoaded", function () {
             cardsLeft.innerHTML = " ";
 
             if (countL % 2) {
-                for (let value of arr4) {
-                    cardsLeft.append(value)
-                }
+                processCards(arr4, cardsLeft);
             } else {
-                for (let value of arr6) {
-                    cardsLeft.append(value)
-                }
+                processCards(arr6, cardsLeft);
             };
         } else {
 
@@ -354,13 +324,9 @@ document.addEventListener("DOMContentLoaded", function () {
             cardsRight.innerHTML = "";
 
             if (countR % 2) {
-                for (let value of arr5) {
-                    cardsRight.append(value)
-                }
+                processCards(arr5, cardsRight);
             } else {
-                for (let value of arr7) {
-                    cardsRight.append(value)
-                }
+                processCards(arr7, cardsRight);
             };
 
         };
@@ -368,4 +334,14 @@ document.addEventListener("DOMContentLoaded", function () {
         btnRight.addEventListener('click', transitionRight);
     });
 
+window.addEventListener('resize', () => {
+    processCards(arr1, cardsLeft);
+    processCards(arr2, cardsActive);
+    processCards(arr3, cardsRight);
+    processCards(arr4, cardsLeft);
+    processCards(arr6, cardsLeft);
+    processCards(arr5, cardsRight);
+    processCards(arr7, cardsRight);
+
+});
 });

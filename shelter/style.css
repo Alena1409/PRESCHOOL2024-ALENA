@@ -872,9 +872,6 @@ li::marker {
     .slider {
         left: -580px;
     }
-    .cards {
-        outline: 1px solid black;
-    }
 
     @keyframes move-left {
         from {left: -580px;}
