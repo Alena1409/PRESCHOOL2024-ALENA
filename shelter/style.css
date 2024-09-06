@@ -43,6 +43,8 @@ body {
     justify-content: space-between;
 }
 
+
+
 .btn-primary {
     padding: 15px 45px;
     border-radius: 100px;
@@ -118,12 +120,7 @@ body {
     background: var(--color-primary)
 }
 
-.btn-2 {
-    display: none;
-}
-.btn-3 {
-    display: none;
-}
+
 /* 
 .btn-left{
     z-index: 8;
@@ -430,7 +427,7 @@ body {
 
 .transition-left {
     animation-name: move-left;
-    animation-duration: 6s;
+    animation-duration: 3s;
 }
 
 @keyframes move-right {
@@ -440,7 +437,7 @@ body {
 
 .transition-right {
     animation-name: move-right;
-    animation-duration: 5s;
+    animation-duration: 3s;
 }
  
 /* карточки не трогать */
@@ -478,7 +475,6 @@ body {
     background: var(--color-primary-light);
     border:none;
 }
-/* ========= */
 
 .display-none {
     display: none;
@@ -797,10 +793,11 @@ li::marker {
 @media (max-width: 1210px) {
     .slider-wrapper {
         width: 580px;
+        /* overflow:scroll; */
     }
-    .slider {
+    /* .slider {
         width: 2440px;
-    }
+    } */
     .in-addition-wrapper{
         flex-direction: column;
         margin-top: 4px;
@@ -873,7 +870,10 @@ li::marker {
     /* ////////////// */
 
     .slider {
-        left: -890px;
+        left: -580px;
+    }
+    .cards {
+        outline: 1px solid black;
     }
 
     @keyframes move-left {
@@ -890,6 +890,7 @@ li::marker {
         display: flex;
         gap: 40px;
     }
+    
     
 
 }
@@ -1109,8 +1110,8 @@ li::marker {
     }
     
     @keyframes move-right {
-        from {left: 0px;}
-        to {left: -270px;}
+        from {left: -270px;}
+        to {left: -540px;}
     }
 
     .cards{
@@ -1336,4 +1337,8 @@ li::marker {
         left: 1px;
         top: -2px;
     }
+}
+
+.hiden {
+    display: none;
 }

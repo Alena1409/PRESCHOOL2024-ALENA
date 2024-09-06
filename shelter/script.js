@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    let w = window.innerWidth;
+
     const body = document.getElementById('body');
     const grey = document.getElementById('grey');
     const header = document.querySelector('header');
@@ -229,76 +231,80 @@ document.addEventListener("DOMContentLoaded", function () {
         return card;
     };
 
-    const card0 = createCards(0);
-    const card1 = createCards(1);
-    const card2 = createCards(2);
-    const card3 = createCards(3);
-    const card4 = createCards(4);
-    const card5 = createCards(5);
-    const card6 = createCards(6);
-    const card7 = createCards(7);
-    const card8 = createCards(0);
+    const arr1 = [createCards(0), createCards(1), createCards(2)];
+    const arr2 = [createCards(3), createCards(4), createCards(5)];
+    const arr3 = [createCards(6), createCards(7), createCards(0)];
 
-    const card9 = createCards(6);
-    const card10 = createCards(7);
-    const card11 = createCards(5);
-    
-    const card12 = createCards(1);
-    const card13 = createCards(2);
-    const card14 = createCards(3);
+    const arr4 = [createCards(5), createCards(6), createCards(7)];
+    const arr5 = [createCards(3), createCards(1), createCards(2)];
 
-    const card15 = createCards(0);
-    const card16 = createCards(1);
-    const card17 = createCards(2);
+    const arr6 = [createCards(0), createCards(1), createCards(2)];
+    const arr7 = [createCards(6), createCards(7), createCards(4)];
 
-    const card18 = createCards(6);
-    const card19 = createCards(7);
-    const card20 = createCards(4);
-
-    const arr1 = [card0, card1, card2]
-    const arr2 = [card3, card4, card5]
-    const arr3 = [card6, card7, card8]
-    const arr4 = [card9, card10, card11]
-    const arr5 = [card12, card13, card14]
-    const arr6 = [card15, card16, card17]
-    const arr7 = [card18, card19, card20]
-
-    arr1.sort(() => Math.random() - 0.5);
-    arr2.sort(() => Math.random() - 0.5);
-    arr3.sort(() => Math.random() - 0.5);
-
-    let w = window.innerWidth;
-
-    for (let value of arr1) {
-        cardsLeft.append(value)
+    function shuffle(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
     }
 
-    for (let value of arr2) {
-        cardsActive.append(value)
-    }
+    shuffle(arr1);
+    shuffle(arr2);
+    shuffle(arr3);
 
-    for (let value of arr3) {
-        cardsRight.append(value)
-    }
-
-    window.addEventListener('resize', function () {
+    const initialCards = () => {
         w = window.innerWidth;
 
-        if (w <= 1200) {
-            arr1.pop()
-            arr2.pop()
-            arr3.pop()
-            arr4.pop()
-            arr5.pop()
-        } else if (w <= 750) {
-            arr1.pop()
-            arr2.pop()
-            arr3.pop()
-            arr4.pop()
-            arr5.pop()
+        const showElements = (arr, count) => {
+            arr.forEach((element, index) => {
+                if (index < count) {
+                    element.classList.remove('hiden');
+                } else {
+                    element.classList.add('hiden');
+                }
+            });
+        };
+
+        // Очистите все предыдущие скрытые элементы
+        [arr1, arr2, arr3, arr4, arr5].flat().forEach(element => element.classList.remove('hiden'));
+
+        if (w > 1200) {
+            showElements(arr1, 3);
+            showElements(arr2, 3);
+            showElements(arr3, 3);
+            showElements(arr4, 3);
+            showElements(arr5, 3);
+        } else if (w > 768) { // 768px <= w <= 1280px
+            showElements(arr1, 2);
+            showElements(arr2, 2);
+            showElements(arr3, 2);
+            showElements(arr4, 2);
+            showElements(arr5, 2);
+        } else if (w > 320) { // 320px < w <= 768px
+            showElements(arr1, 1);
+            showElements(arr2, 1);
+            showElements(arr3, 1);
+            showElements(arr4, 1);
+            showElements(arr5, 1);
+        } else { // w <= 320px
+            showElements(arr1, 1);
+            showElements(arr2, 1);
+            showElements(arr3, 1);
+            showElements(arr4, 1);
+            showElements(arr5, 1);
         }
-    });
-    //  let rondNumber = Math.floor(Math.random() * 5)
+
+        arr1.forEach(value => cardsLeft.append(value));
+        arr2.forEach(value => cardsActive.append(value));
+        arr3.forEach(value => cardsRight.append(value));
+    };
+
+
+    initialCards()
+
+    window.addEventListener('resize', initialCards);
+
     countL = 0;
     countR = 0;
 
@@ -306,16 +312,16 @@ document.addEventListener("DOMContentLoaded", function () {
         slider.classList.add('transition-left');
         btnLeft.removeEventListener('click', transitionLeft);
         btnRight.removeEventListener('click', transitionRight);
-        arr4.sort(() => Math.random() - 0.5);
-        arr6.sort(() => Math.random() - 0.5);
+        shuffle(arr4);
+        shuffle(arr6);
         countL++;
     }
     const transitionRight = () => {
         slider.classList.add('transition-right');
         btnRight.removeEventListener('click', transitionRight);
         btnLeft.removeEventListener('click', transitionLeft);
-        arr5.sort(() => Math.random() - 0.5);
-        arr7.sort(() => Math.random() - 0.5);
+        shuffle(arr5);
+        shuffle(arr7);
         countR++;
     }
 
@@ -356,8 +362,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     cardsRight.append(value)
                 }
             };
+
         };
         btnLeft.addEventListener('click', transitionLeft);
         btnRight.addEventListener('click', transitionRight);
     });
+
 });
