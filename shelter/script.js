@@ -267,9 +267,9 @@ document.addEventListener("DOMContentLoaded", function () {
     
         array.forEach((element, index) => {
             if (index < visibleCount) {
-                element.classList.remove('hiden');
+                element.classList.remove('hidenn');
             } else {
-                element.classList.add('hiden');
+                element.classList.add('hidenn');
             }
             container.append(element);
         });
