@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //данные по питомцам
     const pets = [
         {
-            "name": "Jennifer0",
+            "name": "Jennifer",
             "img": "./assets/img/pets-jennifer.png",
             "type": "Dog",
             "breed": "Labrador",
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Sophia1",
+            "name": "Sophia",
             "img": "./assets/img/pets-sophia.png",
             "type": "Dog",
             "breed": "Shih tzu",
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Woody2",
+            "name": "Woody",
             "img": "./assets/img/pets-woody.png",
             "type": "Dog",
             "breed": "Golden Retriever",
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Scarlett3",
+            "name": "Scarlett",
             "img": "./assets/img/pets-scarlet.png",
             "type": "Dog",
             "breed": "Jack Russell Terrier",
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Katrine4",
+            "name": "Katrine",
             "img": "./assets/img/pets-katrine.png",
             "type": "Cat",
             "breed": "British Shorthair",
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Timmy5",
+            "name": "Timmy",
             "img": "./assets/img/pets-timmy.png",
             "type": "Cat",
             "breed": "British Shorthair",
@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Freddie6",
+            "name": "Freddie",
             "img": "./assets/img/pets-freddie.png",
             "type": "Cat",
             "breed": "British Shorthair",
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Charly7",
+            "name": "Charly",
             "img": "./assets/img/pets-charly.png",
             "type": "Dog",
             "breed": "Jack Russell Terrier",
@@ -135,33 +135,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     ];
 
-    const namePets = pets.map(pet => {
-        return pet.name
-    });
-    const imgPets = pets.map(pet => {
-        return pet.img
-    });
-    const typePets = pets.map(pet => {
-        return pet.type
-    });
-    const breedPets = pets.map(pet => {
-        return pet.breed
-    });
-    const descriptionPets = pets.map(pet => {
-        return pet.description
-    });
-    const agePets = pets.map(pet => {
-        return pet.age
-    });
-    const inoculationsPets = pets.map(pet => {
-        return pet.inoculations
-    });
-    const diseasesPets = pets.map(pet => {
-        return pet.diseases
-    });
-    const parasitesPets = pets.map(pet => {
-        return pet.parasites
-    });
+    const namePets = pets.map(pet => pet.name);
+    const imgPets = pets.map(pet => pet.img);
+    const typePets = pets.map(pet => pet.type);
+    const breedPets = pets.map(pet => pet.breed);
+    const descriptionPets = pets.map(pet => pet.description);
+    const agePets = pets.map(pet => pet.age);
+    const inoculationsPets = pets.map(pet => pet.inoculations);
+    const diseasesPets = pets.map(pet => pet.diseases);
+    const parasitesPets = pets.map(pet => pet.parasites);
 
     const createCards = (i) => {
 
@@ -268,7 +250,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return card;
     }
 
-
     for (let i = 0; i < 6; i++) {
 
         const arr = [];
@@ -282,7 +263,6 @@ document.addEventListener("DOMContentLoaded", function () {
             arr.forEach(pet => cardsContainerRow.append(pet));
         };
     };
-
 
     const funClick = () => {
         if (w > 768) {
@@ -397,7 +377,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 btnPrev.classList.add('btn-ring-normal')
             }
         }
-
     }
 
     funClick();
@@ -422,7 +401,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (topUp > MAX_SCROLL_SMALL) {
                 topUp = MAX_SCROLL_SMALL;
             };
-        }
+        };
 
         cardsContainerRow.style.top = -topUp + 'px';
 

@@ -1,34 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    let w = window.innerWidth;
 
+    const body = document.getElementById('body');
+    const grey = document.getElementById('grey');
+    const header = document.querySelector('header');
+
+    const closeMenu = () => {
+        header.classList.remove('open');
+        grey.classList.remove('grey');
+        body.classList.remove('stop-scroll');
+    };
+
+    const toggleMenu = () => {
+        header.classList.toggle('open');
+        grey.classList.toggle('grey');
+        body.classList.toggle('stop-scroll');
+    };
 
     // burger-menu
-
-    document.getElementById('burger').addEventListener('click', function () {
-        document.querySelector('header').classList.toggle('open');
-        document.getElementById('grey').classList.toggle('grey');
-        document.getElementById('body').classList.toggle('stop-scroll');
-
-        document.getElementById('grey').addEventListener('click', function () {
-            document.querySelector('header').classList.remove('open');
-            document.getElementById('grey').classList.remove('grey');
-            document.getElementById('body').classList.remove('stop-scroll');
-        });
-
-        document.querySelectorAll('.nav-menu-link').forEach(function (item) {
-            item.addEventListener('click', function () {
-                document.querySelector('header').classList.remove('open');
-                document.getElementById('grey').classList.remove('grey');
-                document.getElementById('body').classList.remove('stop-scroll');
-            });
-        });
-    });
-
+    document.getElementById('burger').addEventListener('click', toggleMenu);
+    grey.addEventListener('click', closeMenu);
+    document.querySelectorAll('.nav-menu-link').forEach(item => item.addEventListener('click', closeMenu));
 
     //данные по питомцам
     const pets = [
         {
-            "name": "Jennifer0",
+            "name": "Jennifer",
             "img": "./assets/img/pets-jennifer.png",
             "type": "Dog",
             "breed": "Labrador",
@@ -39,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Sophia1",
+            "name": "Sophia",
             "img": "./assets/img/pets-sophia.png",
             "type": "Dog",
             "breed": "Shih tzu",
@@ -50,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Woody2",
+            "name": "Woody",
             "img": "./assets/img/pets-woody.png",
             "type": "Dog",
             "breed": "Golden Retriever",
@@ -61,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Scarlett3",
+            "name": "Scarlett",
             "img": "./assets/img/pets-scarlet.png",
             "type": "Dog",
             "breed": "Jack Russell Terrier",
@@ -72,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Katrine4",
+            "name": "Katrine",
             "img": "./assets/img/pets-katrine.png",
             "type": "Cat",
             "breed": "British Shorthair",
@@ -83,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Timmy5",
+            "name": "Timmy",
             "img": "./assets/img/pets-timmy.png",
             "type": "Cat",
             "breed": "British Shorthair",
@@ -94,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Freddie6",
+            "name": "Freddie",
             "img": "./assets/img/pets-freddie.png",
             "type": "Cat",
             "breed": "British Shorthair",
@@ -105,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "parasites": ["none"]
         },
         {
-            "name": "Charly7",
+            "name": "Charly",
             "img": "./assets/img/pets-charly.png",
             "type": "Dog",
             "breed": "Jack Russell Terrier",
@@ -122,33 +120,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const cardsRight = document.querySelector('.cards-right');
     const pop = document.querySelector('.pop');
 
-    const namePets = pets.map(pet => {
-        return pet.name
-    });
-    const imgPets = pets.map(pet => {
-        return pet.img
-    });
-    const typePets = pets.map(pet => {
-        return pet.type
-    });
-    const breedPets = pets.map(pet => {
-        return pet.breed
-    });
-    const descriptionPets = pets.map(pet => {
-        return pet.description
-    });
-    const agePets = pets.map(pet => {
-        return pet.age
-    });
-    const inoculationsPets = pets.map(pet => {
-        return pet.inoculations
-    });
-    const diseasesPets = pets.map(pet => {
-        return pet.diseases
-    });
-    const parasitesPets = pets.map(pet => {
-        return pet.parasites
-    });
+    const btnLeft = document.querySelector('.btn-left');
+    const btnRight = document.querySelector('.btn-right');
+    const slider = document.querySelector('.slider');
+
+    const namePets = pets.map(pet => pet.name);
+    const imgPets = pets.map(pet => pet.img);
+    const typePets = pets.map(pet => pet.type);
+    const breedPets = pets.map(pet => pet.breed);
+    const descriptionPets = pets.map(pet => pet.description);
+    const agePets = pets.map(pet => pet.age);
+    const inoculationsPets = pets.map(pet => pet.inoculations);
+    const diseasesPets = pets.map(pet => pet.diseases);
+    const parasitesPets = pets.map(pet => pet.parasites);
 
 
     const createCards = (i) => {
@@ -168,9 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btnCard.classList.add('btn-secondary');
         btnCard.innerText = 'Learn more';
 
-        card.append(imgCard);
-        card.append(nameCard);
-        card.append(btnCard);
+        card.append(imgCard, nameCard, btnCard);
 
         //модалка
 
@@ -193,9 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const modalConten = document.createElement('div');
         modalConten.classList.add('modal-conten');
 
-        modalWrapper.append(btnModal);
-        modalWrapper.append(imgModal);
-        modalWrapper.append(modalConten);
+        modalWrapper.append(btnModal, imgModal, modalConten);
 
         const modalHeading = document.createElement('h3');
         modalHeading.classList.add('modal-heading');
@@ -212,10 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const modalList = document.createElement('ul');
         modalList.classList.add('modal-list');
 
-        modalConten.append(modalHeading);
-        modalConten.append(modalSubheading);
-        modalConten.append(modalText);
-        modalConten.append(modalList);
+        modalConten.append(modalHeading, modalSubheading, modalText, modalList);
 
         const age = document.createElement('li');
         age.classList.add('modal-item');
@@ -233,10 +210,7 @@ document.addEventListener("DOMContentLoaded", function () {
         parasites.classList.add('modal-item');
         parasites.innerHTML = `<span>Parasites: </span>${parasitesPets[i]}`;
 
-        modalList.append(age);
-        modalList.append(inoculations);
-        modalList.append(diseases);
-        modalList.append(parasites);
+        modalList.append(age, inoculations, diseases, parasites);
 
         card.addEventListener('click', () => {
             modal.classList.remove('display-none');
@@ -255,92 +229,55 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         })
         return card;
-    }
+    };
 
-    const card0 = createCards(0);
-    const card1 = createCards(1);
-    const card2 = createCards(2);
-    const card3 = createCards(3);
-    const card4 = createCards(4);
-    const card5 = createCards(5);
-    const card6 = createCards(6);
-    const card7 = createCards(7);
-    const card8 = createCards(0);
+    const arr1 = [createCards(0), createCards(1), createCards(2)];
+    const arr2 = [createCards(3), createCards(4), createCards(5)];
+    const arr3 = [createCards(6), createCards(7), createCards(0)];
 
-    const card9 = createCards(6);
-    const card10 = createCards(7);
-    const card11 = createCards(5);
+    const arr4 = [createCards(5), createCards(6), createCards(7)];
+    const arr5 = [createCards(3), createCards(1), createCards(2)];
 
+    const arr6 = [createCards(0), createCards(1), createCards(2)];
+    const arr7 = [createCards(6), createCards(7), createCards(4)];
 
-    const card12 = createCards(1);
-    const card13 = createCards(2);
-    const card14 = createCards(3);
-
-
-    const card15 = createCards(0);
-    const card16 = createCards(1);
-    const card17 = createCards(2);
-
-    const card18 = createCards(6);
-    const card19 = createCards(7);
-    const card20 = createCards(4);
-
-    const arr1 = [card0, card1, card2]
-    const arr2 = [card3, card4, card5]
-    const arr3 = [card6, card7, card8]
-    const arr4 = [card9, card10, card11]
-    const arr5 = [card12, card13, card14]
-    const arr6 = [card15, card16, card17]
-    const arr7 = [card18, card19, card20]
-
-    arr1.sort(() => Math.random() - 0.5);
-    arr2.sort(() => Math.random() - 0.5);
-    arr3.sort(() => Math.random() - 0.5);
-    
-    
-
-
-    let w = window.innerWidth;
-
-
-    for (let value of arr1) {
-        cardsLeft.append(value)
-    }
-
-    for (let value of arr2) {
-        cardsActive.append(value)
-    }
-
-    for (let value of arr3) {
-        cardsRight.append(value)
-    }
-
-    window.addEventListener('resize', function () {
-        w = window.innerWidth;
-
-
-        if (w <= 1200) {
-            arr1.pop()
-            arr2.pop()
-            arr3.pop()
-            arr4.pop()
-            arr5.pop()
-        } else if (w <= 750) {
-            arr1.pop()
-            arr2.pop()
-            arr3.pop()
-            arr4.pop()
-            arr5.pop()
+    function shuffle(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
         }
-    });
+        return arr;
+    }
 
+    shuffle(arr1);
+    shuffle(arr2);
+    shuffle(arr3);
 
-    //  let rondNumber = Math.floor(Math.random() * 5)
+    const processCards = (array, container) => {
+        let w = window.innerWidth;
+    
+        let visibleCount = 1; 
+        if (w > 1200) {
+            visibleCount = 3;
+        } else if (w > 768) {
+            visibleCount = 2;
+        }
 
+        container.innerHTML = "";
+    
+        array.forEach((element, index) => {
+            if (index < visibleCount) {
+                element.classList.remove('hiden');
+            } else {
+                element.classList.add('hiden');
+            }
+            container.append(element);
+        });
+    };
 
-    const btnLeft = document.querySelector('.btn-left');
-    const btnRight = document.querySelector('.btn-right');
-    const slider = document.querySelector('.slider');
+    processCards(arr1, cardsLeft);
+    processCards(arr2, cardsActive);
+    processCards(arr3, cardsRight);
 
     countL = 0;
     countR = 0;
@@ -349,25 +286,21 @@ document.addEventListener("DOMContentLoaded", function () {
         slider.classList.add('transition-left');
         btnLeft.removeEventListener('click', transitionLeft);
         btnRight.removeEventListener('click', transitionRight);
-        arr4.sort(() => Math.random() - 0.5);
-        arr6.sort(() => Math.random() - 0.5);
+        shuffle(arr4);
+        shuffle(arr6);
         countL++;
     }
     const transitionRight = () => {
         slider.classList.add('transition-right');
         btnRight.removeEventListener('click', transitionRight);
         btnLeft.removeEventListener('click', transitionLeft);
-        arr5.sort(() => Math.random() - 0.5);
-        arr7.sort(() => Math.random() - 0.5);
+        shuffle(arr5);
+        shuffle(arr7);
         countR++;
     }
 
-
     btnLeft.addEventListener('click', transitionLeft);
-    btnRight.addEventListener('click', transitionRight)
-
-    
-   
+    btnRight.addEventListener('click', transitionRight);
 
     slider.addEventListener("animationend", (event) => {
 
@@ -376,44 +309,39 @@ document.addEventListener("DOMContentLoaded", function () {
             slider.classList.remove('transition-left');
 
             cardsActive.innerHTML = cardsLeft.innerHTML;
-        
             cardsLeft.innerHTML = " ";
 
             if (countL % 2) {
-                for (let value of arr4) {
-                    cardsLeft.append(value)
-                }
+                processCards(arr4, cardsLeft);
             } else {
-                for (let value of arr6) {
-                    cardsLeft.append(value)
-                }
-            }
-
-
+                processCards(arr6, cardsLeft);
+            };
         } else {
 
             slider.classList.remove('transition-right');
 
             cardsActive.innerHTML = cardsRight.innerHTML;
-
             cardsRight.innerHTML = "";
 
             if (countR % 2) {
-                for (let value of arr5) {
-                    cardsRight.append(value)
-                }
-
+                processCards(arr5, cardsRight);
             } else {
-                for (let value of arr7) {
-                    cardsRight.append(value)
-                }
+                processCards(arr7, cardsRight);
+            };
 
-            }
-
-        }
-
+        };
         btnLeft.addEventListener('click', transitionLeft);
-        btnRight.addEventListener('click', transitionRight)
-    })
+        btnRight.addEventListener('click', transitionRight);
+    });
 
-})
+window.addEventListener('resize', () => {
+    processCards(arr1, cardsLeft);
+    processCards(arr2, cardsActive);
+    processCards(arr3, cardsRight);
+    processCards(arr4, cardsLeft);
+    processCards(arr6, cardsLeft);
+    processCards(arr5, cardsRight);
+    processCards(arr7, cardsRight);
+
+});
+});
