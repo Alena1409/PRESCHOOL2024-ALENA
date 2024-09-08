@@ -135,36 +135,28 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     ];
 
-    const namePets = pets.map(pet => pet.name);
-    const imgPets = pets.map(pet => pet.img);
-    const typePets = pets.map(pet => pet.type);
-    const breedPets = pets.map(pet => pet.breed);
-    const descriptionPets = pets.map(pet => pet.description);
-    const agePets = pets.map(pet => pet.age);
-    const inoculationsPets = pets.map(pet => pet.inoculations);
-    const diseasesPets = pets.map(pet => pet.diseases);
-    const parasitesPets = pets.map(pet => pet.parasites);
-
     const createCards = (i) => {
+
+        const pet = pets[i];
 
         const card = document.createElement('div');
         card.classList.add('friends-card');
 
         const imgCard = document.createElement('img');
         imgCard.classList.add('img-card');
-        imgCard.src = imgPets[i];
+        imgCard.src = pet.img;
 
         const nameCard = document.createElement('p');
         nameCard.classList.add('friends-card-paragraf');
-        nameCard.innerHTML = namePets[i];
+        nameCard.innerHTML = pet.name;
 
         const btnCard = document.createElement('button');
         btnCard.classList.add('btn-secondary');
         btnCard.innerText = 'Learn more';
 
-        card.append(imgCard);
-        card.append(nameCard);
-        card.append(btnCard);
+        card.append(imgCard, nameCard, btnCard);
+
+        //модалка
 
         const modal = document.createElement('div');
         modal.classList.add('modal', 'display-none');
@@ -180,55 +172,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const imgModal = document.createElement('img');
         imgModal.classList.add('modal-img');
-        imgModal.src = imgPets[i];
+        imgModal.src = pet.img;
 
         const modalConten = document.createElement('div');
         modalConten.classList.add('modal-conten');
 
-        modalWrapper.append(btnModal);
-        modalWrapper.append(imgModal);
-        modalWrapper.append(modalConten);
+        modalWrapper.append(btnModal, imgModal, modalConten);
 
         const modalHeading = document.createElement('h3');
         modalHeading.classList.add('modal-heading');
-        modalHeading.innerHTML = namePets[i];
+        modalHeading.innerHTML = pet.name;
 
         const modalSubheading = document.createElement('h4');
         modalSubheading.classList.add('modal-subheading');
-        modalSubheading.innerHTML = `${typePets[i]} - ${breedPets[i]}`;
+        modalSubheading.innerHTML = `${pet.type} - ${pet.breed}`;
 
         const modalText = document.createElement('p');
         modalText.classList.add('modal-text');
-        modalText.innerHTML = descriptionPets[i];
+        modalText.innerHTML = pet.description;
 
         const modalList = document.createElement('ul');
         modalList.classList.add('modal-list');
 
-        modalConten.append(modalHeading);
-        modalConten.append(modalSubheading);
-        modalConten.append(modalText);
-        modalConten.append(modalList);
+        modalConten.append(modalHeading, modalSubheading, modalText, modalList);
 
         const age = document.createElement('li');
         age.classList.add('modal-item');
-        age.innerHTML = `<span>Age: </span>${agePets[i]}`;
+        age.innerHTML = `<span>Age: </span>${pet.age}`;
 
         const inoculations = document.createElement('li');
         inoculations.classList.add('modal-item');
-        inoculations.innerHTML = `<span>inoculations: </span>${inoculationsPets[i]}`;
+        inoculations.innerHTML = `<span>inoculations: </span>${pet.inoculations}`;
 
         const diseases = document.createElement('li');
         diseases.classList.add('modal-item');
-        diseases.innerHTML = `<span>Diseases: </span>${diseasesPets[i]}`;
+        diseases.innerHTML = `<span>Diseases: </span>${pet.diseases}`;
 
         const parasites = document.createElement('li');
         parasites.classList.add('modal-item');
-        parasites.innerHTML = `<span>Parasites: </span>${parasitesPets[i]}`;
+        parasites.innerHTML = `<span>Parasites: </span>${pet.parasites}`;
 
-        modalList.append(age);
-        modalList.append(inoculations);
-        modalList.append(diseases);
-        modalList.append(parasites);
+        modalList.append(age, inoculations, diseases, parasites);
 
         card.addEventListener('click', () => {
             modal.classList.remove('display-none');
@@ -245,10 +229,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 modal.classList.add('display-none');
                 document.getElementById('body').classList.remove('stop-scroll');
             }
-        })
-
+        });
+        
         return card;
-    }
+    };
 
     for (let i = 0; i < 6; i++) {
 
@@ -518,5 +502,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('resize', function () {
         w = window.innerWidth;
     });
+    console.log('работа выполнена примерно на 90%')
 });
 

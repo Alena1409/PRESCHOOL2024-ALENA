@@ -124,29 +124,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnRight = document.querySelector('.btn-right');
     const slider = document.querySelector('.slider');
 
-    const namePets = pets.map(pet => pet.name);
-    const imgPets = pets.map(pet => pet.img);
-    const typePets = pets.map(pet => pet.type);
-    const breedPets = pets.map(pet => pet.breed);
-    const descriptionPets = pets.map(pet => pet.description);
-    const agePets = pets.map(pet => pet.age);
-    const inoculationsPets = pets.map(pet => pet.inoculations);
-    const diseasesPets = pets.map(pet => pet.diseases);
-    const parasitesPets = pets.map(pet => pet.parasites);
-
-
     const createCards = (i) => {
+
+        const pet = pets[i];
 
         const card = document.createElement('div');
         card.classList.add('friends-card');
 
         const imgCard = document.createElement('img');
         imgCard.classList.add('img-card');
-        imgCard.src = imgPets[i];
+        imgCard.src = pet.img;
 
         const nameCard = document.createElement('p');
         nameCard.classList.add('friends-card-paragraf');
-        nameCard.innerHTML = namePets[i];
+        nameCard.innerHTML = pet.name;
 
         const btnCard = document.createElement('button');
         btnCard.classList.add('btn-secondary');
@@ -170,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const imgModal = document.createElement('img');
         imgModal.classList.add('modal-img');
-        imgModal.src = imgPets[i];
+        imgModal.src = pet.img;
 
         const modalConten = document.createElement('div');
         modalConten.classList.add('modal-conten');
@@ -179,15 +170,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const modalHeading = document.createElement('h3');
         modalHeading.classList.add('modal-heading');
-        modalHeading.innerHTML = namePets[i];
+        modalHeading.innerHTML = pet.name;
 
         const modalSubheading = document.createElement('h4');
         modalSubheading.classList.add('modal-subheading');
-        modalSubheading.innerHTML = `${typePets[i]} - ${breedPets[i]}`;
+        modalSubheading.innerHTML = `${pet.type} - ${pet.breed}`;
 
         const modalText = document.createElement('p');
         modalText.classList.add('modal-text');
-        modalText.innerHTML = descriptionPets[i];
+        modalText.innerHTML = pet.description;
 
         const modalList = document.createElement('ul');
         modalList.classList.add('modal-list');
@@ -196,19 +187,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const age = document.createElement('li');
         age.classList.add('modal-item');
-        age.innerHTML = `<span>Age: </span>${agePets[i]}`;
+        age.innerHTML = `<span>Age: </span>${pet.age}`;
 
         const inoculations = document.createElement('li');
         inoculations.classList.add('modal-item');
-        inoculations.innerHTML = `<span>inoculations: </span>${inoculationsPets[i]}`;
+        inoculations.innerHTML = `<span>inoculations: </span>${pet.inoculations}`;
 
         const diseases = document.createElement('li');
         diseases.classList.add('modal-item');
-        diseases.innerHTML = `<span>Diseases: </span>${diseasesPets[i]}`;
+        diseases.innerHTML = `<span>Diseases: </span>${pet.diseases}`;
 
         const parasites = document.createElement('li');
         parasites.classList.add('modal-item');
-        parasites.innerHTML = `<span>Parasites: </span>${parasitesPets[i]}`;
+        parasites.innerHTML = `<span>Parasites: </span>${pet.parasites}`;
 
         modalList.append(age, inoculations, diseases, parasites);
 
@@ -344,4 +335,6 @@ window.addEventListener('resize', () => {
     processCards(arr7, cardsRight);
 
 });
+
+console.log('Работа выполнена примерно на 90%. Если есть врианты, как дополнить мой код, не меняя сильно его, чтобы он заработал на 100%, буду рада предложениям, так как я уже не знаю, как можно доделать карусель для выполнения всех-всех требований. Карусель мне сниться ночами(((')
 });
