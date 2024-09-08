@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let visibleCount = 1; 
         if (w > 1200) {
             visibleCount = 3;
-        } else if (w > 768) {
+        } else if (w > 500) {
             visibleCount = 2;
         }
 
