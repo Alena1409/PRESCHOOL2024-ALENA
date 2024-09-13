@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    color: white;
+}
+header {
+    width: 100%;
+    background-color: black;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.logo {
+    width: 30px;
+    height: auto;
+    box-shadow: 0 0 0 rgba(204,169,44, 0.4);
+    animation: logo 2s infinite;
+}
+
+@keyframes logo {
+    0% {
+      -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+     box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+    }
+   70% {
+     -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+      box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+   }
+   100% {
+      -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+     box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+    }
+  }
+
+.nav ul {
+    display: flex;
+    gap: 0 50px;
+}
+.nav li {
+    list-style: none;
+}
+main{
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 120px);
+    background-image: url(./assets/img/forest.jpg);
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+} 
+
+footer{
+    width: 100%;
+    background-color: black;
+    height: 60px;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.school img {
+    width: auto;
+    height: 60px;
+}
