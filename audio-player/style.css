@@ -87,7 +87,7 @@ main {
     display: flex;
     justify-content: space-evenly;
     align-items:center;
-    height: 45%;
+    height: 40%;
     width: 100%;
 }
 .backward, .forward {
@@ -123,17 +123,19 @@ main {
 }
 .time {
     font-size: 16px;
-    color: #fff;
-    height: 25%;
-    width: 100%;
+    color:rgb(0, 0, 0);
+    height: 15%;
+    width: 90%;
     display: flex;
     justify-content: center;
     align-items:center;
+    font-size: 10px;
+    gap: 5px
   }
 
-.current-time, .total-time {
-    display: inline-block;
-  }
+/* .total-time {
+    color: rgb(59, 231, 24);
+} */
 
 .progress-container{
     background: rgb(63,94,251);
@@ -156,7 +158,6 @@ footer {
     display: flex;
     justify-content: center;
     align-items:center;
-    
 }
 
 .wrapper {
@@ -165,7 +166,7 @@ footer {
     justify-content: space-between;
     align-items: center;
     color: azure;
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .school {
@@ -176,3 +177,31 @@ a {
     color: #fff;
     text-decoration: none;
 }
+
+ .range {
+    -webkit-appearance: none; /* Убирает стандартный вид на WebKit браузерах */
+    width: 100%;
+    height: 8px;
+    background: #ddd;
+    border-radius: 0px;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity .2s;
+  }
+
+  /* Стили для ползунка при наведении */
+  .range:hover {
+    opacity: 1;
+  }
+
+.volue {
+height: 10%;
+width: 90%;
+display: flex;
+justify-content: space-between;
+}
+
+
+  .volue img {
+    width: 10px;
+  }

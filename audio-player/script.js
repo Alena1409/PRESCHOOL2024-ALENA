@@ -12,20 +12,21 @@ const progressContainer = document.querySelector('.progress-container');
 const progress = document.querySelector('.progress');
 const totalTime = document.querySelector('.total-time');
 const newTime = document.querySelector('.current-time');
+const range = document.querySelector('.range')
 
 const audios = [
     {
         "name": "mauntins",
         "img": "./assets/img/mauntins.jpg",
         "audio": "./assets/audio/mauntins.mp3",
-        "autor": "Merab Amzoevi",
+        "autor": "BLIZKEY",
         "nameaudio": "Горы",
     },
     {
         "name": "half",
         "img": "./assets/img/half.jpg",
         "audio": "./assets/audio/half.mp3",
-        "autor": "Merab Amzoevi",
+        "autor": "Amura",
         "nameaudio": "Меня без тебя половина",
     },
     {
@@ -34,13 +35,6 @@ const audios = [
         "audio": "./assets/audio/pay.mp3",
         "autor": "A.V.G",
         "nameaudio": "Я плачу",
-    },
-    {
-        "name": "lastLove",
-        "img": "./assets/img/lastLove.jpg",
-        "audio": "./assets/audio/lastLove.mp3",
-        "autor": "MORGENSHTERN",
-        "nameaudio": "Последняя Любовь",
     },
     {
         "name": "wings",
@@ -96,7 +90,7 @@ function updadeProgress (e) {
     const currentTime = audio.currentTime;
     const progressPersent = (currentTime / duration) * 100;
     progress.style.width = `${progressPersent}%`;
-    
+
     newTime.textContent = formatTime(currentTime);
     totalTime.textContent = formatTime(duration);
 }
@@ -112,6 +106,12 @@ function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+}
+
+range.oninput = function() {
+    // Преобразование значения ползунка в диапазон от 0 до 1
+    let normalizedValue = (this.value - this.min) / (this.max - this.min);
+    audio.volume = normalizedValue;
 }
 
 
