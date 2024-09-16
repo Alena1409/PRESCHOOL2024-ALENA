@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.hidden {
+    display: none;
+}
+
 body {
     display: flex;
     height: 100vh;
@@ -13,6 +17,7 @@ body {
     padding: 0;
     background-image: url(./assets/img/lemonade.png);
     background-size: cover;
+    backdrop-filter: blur(5px);
 }
 
 main {
@@ -29,63 +34,121 @@ main {
 .player {
     display: flex;
     flex-direction: column;
-    width: 30vh;
-    height: 40vh;
-    box-shadow: 0 0 0 rgba(49, 211, 34, 0.432);
+    border-radius: 16px;
+    overflow: hidden;
+    width: 50vh;
+    height: 70vh;
+    box-shadow: 5px 5px 5px 0px rgba(84, 82, 167, 0.6);
+    border: rgba(84, 82, 167, 0.6) 1px solid;
+
+    /* animation: logo 2s infinite; */
+}
+
+
+
+.imgPlayer {
+    width: 100%;
+    height: 60%;
+    background-image: url(./assets/img/mauntinspng);
+    background-size: cover;
+}
+
+.navigation {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+    background: linear-gradient(156deg, rgba(63,94,251,1) 7%, rgba(252,70,239,1) 100%);
+}
+
+.play, .pause{
+    height: 90%;
+    width: auto;
+    border-radius: 50%;
+    filter:drop-shadow( 0 0 0 rgba(40, 245, 21, 0.432));
     animation: logo 2s infinite;
 }
 
 @keyframes logo {
     0% {
-      -moz-box-shadow: 0 0 0 0 rgba(49, 211, 34, 0.432);
-     box-shadow: 0 0 0 0 rgba(49, 211, 34, 0.432);
+     box-shadow: 0 0 0 0 rgba(40, 245, 21, 0.432);
     }
    70% {
-     -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
-      box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+      box-shadow: 0 0 0 5px rgba(137, 228, 137, 0.178)
    }
    100% {
-      -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
-     box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+     box-shadow: 0 0 0 0 rgba(188, 231, 188, 0.089);
     }
 }
 
-.navigation {
+.btns {
+    display: flex;
+    justify-content: space-evenly;
+    align-items:center;
+    height: 45%;
     width: 100%;
+}
+.backward, .forward {
+    width: auto;
+    height: 50%;
+}
+
+.discription {
+    display: flex;
+    justify-content: center;
+    align-items:center;
     height: 30%;
-    display: flex;
+    width: 100%;
+    font-size: small;
     flex-direction: column;
-    justify-content: space-around;
-    align-items:center;
-    background-color:aqua
+    /* gap: 10px; */
 }
 
-.nav {
-    width: 90%;
-    height: 90%;
+.autor {
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color:rgb(59, 231, 24);
+    font-size: 3vh;
+}
+
+.nameaudio {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2vh;
+    color:rgb(0, 0, 0);
+}
+.time {
+    font-size: 16px;
+    color: #fff;
+    height: 25%;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
-    outline: 1px solid red;
+    justify-content: center;
+    align-items:center;
+  }
+
+.current-time, .total-time {
+    display: inline-block;
+  }
+
+.progress-container{
+    background: rgb(63,94,251);
+    border-radius: 5px;
+    height: 5px;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
     align-items:center;
 }
-
-.play {
-    width: 30px;
-    height: 30px;
-}
-
-.nav2 {
-    display: flex;
-    flex-direction: column;
-}
-.backward {
-    width: 20px;
-    height: 20px;
-}
-
-.forward {
-    width: 20px;
-    height: 20px;
+.progress {
+    background-color: rgb(59, 231, 24);
+    border-radius: 5px;
+    width: 0%;
+    height: 100%;
 }
 
 footer {
@@ -97,7 +160,7 @@ footer {
 }
 
 .wrapper {
-    width: 30vh;
+    width: 50vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -107,4 +170,9 @@ footer {
 
 .school {
     width: 10vh;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
 }
