@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>audio-player</title>
+    <link rel="icon" href="./assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <div class="player">
+            <audio src="./assets/audio/mauntins.mp3"></audio>
+            <div class="imgPlayer"></div>
+            <div class="navigation">
+                <div class="discription"><div class="autor">автор</div><div class="nameaudio">- название песни</div></div>
+                <div class="btns">
+                    <img class="backward" src="./assets/svg/backward.png" alt="backward">
+                    <img class="play" src="./assets/svg/play.png" alt="play">
+                    <img class="pause hidden" src="./assets/svg/pause.png" alt="pause">
+                    <img class="forward" src="./assets/svg/forward.png" alt="forward">
+                </div>
+                <div class="time">
+                    <span class="current-time">00:00</span>
+                    <div class="progress-container">
+                        <div class="progress"></div>
+                    </div>
+                    <span class="total-time">00:00</span>
+                </div>
+                <div class="volue">
+                    <img src="./assets/svg/volume-mute.svg">
+                    <img src="./assets/svg/volume-down.svg">
+                    <img src="./assets/svg/volume.svg">
+                </div>
+                <input class="range" min="0" max="100" value="100" type="range">
+            </div> 
+        </div>
+    </main>
+    <footer>
+        <div class="wrapper">
+            <div class="data">2022</div>
+            <div class="git"><a href="https://github.com/Alena1409/" target="_blank">github</a></div>
+            <div><img class="school" src="./assets/svg/rss.svg" alt="rss"></div>
+        </div>
+
+    </footer>
+    <script src="script.js"></script>
+</body>
