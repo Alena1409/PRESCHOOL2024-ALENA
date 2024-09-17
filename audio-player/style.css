@@ -40,8 +40,6 @@ main {
     height: 85vh;
     box-shadow: 5px 5px 5px 0px rgba(84, 82, 167, 0.6);
     border: rgba(84, 82, 167, 0.6) 1px solid;
-
-    /* animation: logo 2s infinite; */
 }
 
 .more {
@@ -50,6 +48,7 @@ main {
     margin: auto auto;
     z-index: 3;
     right: 15px;
+    cursor: pointer;
 }
 
 .text {
@@ -60,6 +59,32 @@ main {
     font-size: 2vh;
     position: absolute;
     z-index: 2;
+}
+
+.discription {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    height: 32%;
+    width: 100%;
+    font-size: small;
+    flex-direction: column;
+}
+
+.autor {
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-style: normal;
+    color:rgb(59, 231, 24);
+    font-size: 3vh;
+}
+
+.nameaudio {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 2vh;
+    color:rgb(0, 0, 0);
 }
 
 .imgPlayer {
@@ -79,12 +104,25 @@ main {
     background: linear-gradient(156deg, rgba(63,94,251,1) 7%, rgba(252,70,239,1) 100%);
 }
 
+.btns {
+    display: flex;
+    justify-content: space-evenly;
+    align-items:center;
+    height: 40%;
+    width: 100%;
+}
+
 .play, .pause{
     height: 90%;
     width: auto;
     border-radius: 50%;
     filter:drop-shadow( 0 0 0 rgba(40, 245, 21, 0.432));
     animation: logo 2s infinite;
+}
+
+.backward, .forward {
+    width: auto;
+    height: 50%;
 }
 
 @keyframes logo {
@@ -99,44 +137,6 @@ main {
     }
 }
 
-.btns {
-    display: flex;
-    justify-content: space-evenly;
-    align-items:center;
-    height: 40%;
-    width: 100%;
-}
-.backward, .forward {
-    width: auto;
-    height: 50%;
-}
-
-.discription {
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    height: 32%;
-    width: 100%;
-    font-size: small;
-    flex-direction: column;
-    /* gap: 10px; */
-}
-
-.autor {
-    font-family: "Permanent Marker", cursive;
-    font-weight: 400;
-    font-style: normal;
-    color:rgb(59, 231, 24);
-    font-size: 3vh;
-}
-
-.nameaudio {
-    font-family: "Ubuntu", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 2vh;
-    color:rgb(0, 0, 0);
-}
 .time {
     font-size: 16px;
     color:rgb(0, 0, 0);
@@ -148,10 +148,6 @@ main {
     font-size: 10px;
     gap: 5px
   }
-
-/* .total-time {
-    color: rgb(59, 231, 24);
-} */
 
 .progress-container{
     background: rgb(63,94,251);
@@ -169,31 +165,6 @@ main {
     height: 100%;
 }
 
-footer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-}
-
-.wrapper {
-    width: 48vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: azure;
-    font-size: 10px;
-}
-
-.school {
-    width: 10vh;
-}
-
-a {
-    color: #fff;
-    text-decoration: none;
-}
-
 .range {
     -webkit-appearance: none; /* Убирает стандартный вид на WebKit браузерах */
     width: 100%;
@@ -205,19 +176,42 @@ a {
     transition: opacity .2s;
 }
 
-  /* Стили для ползунка при наведении */
 .range:hover {
     opacity: 1;
 }
 
 .volue {
-height: 10%;
-width: 90%;
-display: flex;
-justify-content: space-between;
+    height: 10%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
 }
-
 
 .volue img {
     width: 10px;
+}
+
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.wrapper {
+    width: 45vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: azure;
+    font-size: 10px;
+}
+
+.school {
+    width: 8vh;
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
 }
