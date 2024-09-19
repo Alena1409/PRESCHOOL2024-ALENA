@@ -1,0 +1,10 @@
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.gallery-img {
+    width: 200px; /* Задайте нужную ширину */
+    height: auto; /* Автоматическая высота для сохранения пропорций */
+    /* margin: 5px; Отступы между изображениями */
+}
