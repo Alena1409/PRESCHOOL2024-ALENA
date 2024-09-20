@@ -1,10 +1,105 @@
-.gallery {
+/* 
+element {
+    --dark-green: #355326;
+    --light-green: #7c9982;
+    --milk: #f9f8f6;
+    --gold: #e7caa9;
+    --violet: #b39d96;
+} */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items:center;
+    background-color:#f9f8f6;
+}
+header {
+    height: 60px;
+    background-color: #7c9982;
+}
+main {
+    width: 100%;
+    height: calc(100vh - 100px);
+}
+.container {
+    max-width: 1200px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.wrapper {
+    height: 100%;
     display: flex;
-    flex-wrap: wrap;
+    align-items:center;
+    justify-content: space-between;
+
+}
+
+.logo {
+    color: #e7caa9;
+    font-size: 3vw;
+}
+.search {
+    display: flex;
     gap: 10px;
 }
+.btn {
+    background-color: #b39d96;
+    border: #e7caa9 1px solid;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #e7caa9;
+}
+
+.input {
+    background-color: #f9f8f6;
+    border: #e7caa9 1px solid;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.gallery {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow-y: scroll;
+}
+
 .gallery-img {
-    width: 200px; /* Задайте нужную ширину */
-    height: auto; /* Автоматическая высота для сохранения пропорций */
-    /* margin: 5px; Отступы между изображениями */
+    width: calc(33.33% - 10px);
+    height: auto;
+    margin: 5px;
+}
+
+footer {
+height: 40px;
+background-color: #7c9982;
+}
+
+@media (max-width: 1000px) {
+    .gallery-img {
+        width: calc(50% - 10px);
+        height: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-img {
+        width: calc(100% - 10px); 
+        height: auto; 
+    }
 }

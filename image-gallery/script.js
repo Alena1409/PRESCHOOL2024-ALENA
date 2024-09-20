@@ -1,22 +1,22 @@
-// let url = "https://api.unsplash.com/photos/?per_page=9&query&client_id=9KxCKS9lk1xG7TZbO7UOot9q-2g_q3dMTf8mFKYBar4"
+// let url = "https://api.unsplash.com/photos/?per_page=9&query&client_id=9KxCKS9lk1xG7TZbO7UOot9q-2g_q3dMTf8mFKYBar4" `https://api.unsplash.com/photos?fit=crop&w=200&h=200&per_page=9&client_id=9KxCKS9lk1xG7TZbO7UOot9q-2g_q3dMTf8mFKYBar4`;
 const gallery = document.querySelector('.gallery');
 const input = document.querySelector('.input');
 const btn = document.querySelector('.btn');
 
 async function getImages(query = '') {
-    const url = query 
-        ? `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&per_page=9&orientation=squarish&w=200&h=200&client_id=9KxCKS9lk1xG7TZbO7UOot9q-2g_q3dMTf8mFKYBar4`
-        : `https://api.unsplash.com/photos?fit=crop&w=200&h=200&per_page=9&client_id=9KxCKS9lk1xG7TZbO7UOot9q-2g_q3dMTf8mFKYBar4`;
+    const url = query
+        ? `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&orientation=landscape&per_page=12&extras=url_s&tag_mode=all&client_id=9KxCKS9lk1xG7TZbO7UOot9q-2g_q3dMTf8mFKYBar4`
+        : `https://api.unsplash.com/photos?per_page=12&client_id=9KxCKS9lk1xG7TZbO7UOot9q-2g_q3dMTf8mFKYBar4`;
 
     gallery.innerHTML = '';
-    
+
     try {
         const res = await fetch(url);
-        
+
         if (!res.ok) {
             throw new Error('Network response was not ok');
         }
-        
+
         const data = await res.json();
 
         // Проверяем, есть ли результаты
@@ -41,6 +41,7 @@ async function getImages(query = '') {
     }
 }
 
+
 // по умолчанию выгружаю
 getImages();
 
@@ -56,3 +57,21 @@ btn.addEventListener('click', () => {
 });
 
 
+// const url = "https://api.unsplash.com/search/photos?query=spring&per_page=5&client_id=9KxCKS9lk1xG7TZbO7UOot9q-2g_q3dMTf8mFKYBar4";
+
+// async function getData() {
+//     const res = await fetch(url);
+//     const data = await res.json();
+//     console.log(data);
+
+//     showData()
+// }
+// getData();
+
+// async function showData(data) {
+//     const img = document.createElement("img");
+//     img.classList.add("gallery-img");
+//     img.src = `полученный от API адрес изображения`;
+//     img.alt = `image`;
+//     galleryContainer.append(img);
+// }
