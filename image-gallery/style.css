@@ -1,11 +1,3 @@
-/* 
-element {
-    --dark-green: #355326;
-    --light-green: #7c9982;
-    --milk: #f9f8f6;
-    --gold: #e7caa9;
-    --violet: #b39d96;
-} */
 * {
     margin: 0;
     padding: 0;
@@ -102,6 +94,12 @@ main {
 footer {
 height: 40px;
 background-color: #7c9982;
+}
+
+a, .data {
+    color:#e7caa9;
+    text-decoration: none;
+
 }
 
 .school {
