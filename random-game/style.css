@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    background: linear-gradient(47deg, #66a07a 0%, #4d8164 100%);
+}
+
+main {
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+footer {
+    height: 10%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 5%;
+    align-items: center;
+    justify-content: center;
+}
+
+.snake {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30%;
+    height: auto;
+}
+
+.logo {
+    height: 5vh;
+    display: flex;
+}
+
+.school {
+    height: 100%;
+}
