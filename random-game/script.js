@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const background = new Image();
     background.src = './assets/img/field.png';
 
-    const sound = new Image();
-    sound.src = './assets/svg/volume-mute.svg'
+    const play = new Image();
+    play.src = './assets/svg/youtube.svg'
 
     foods = [
         "./assets/img/blueberry.png",
@@ -49,23 +49,70 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     let snake = [];
-    
+
     snake[0] = {
         x: 9 * box,
         y: 9 * box,
     }
 
+    const resultsKey = 'snakeGameResults';
+    let results = JSON.parse(localStorage.getItem(resultsKey)) || [];
+
+    function saveResults() {
+        if (results.length >= 10) {
+            results.pop(); // Удаляем старый результат, если больше 10
+        }
+        results.unshift(score);
+        localStorage.setItem(resultsKey, JSON.stringify(results));
+        displayResults();
+        console.log(results) // Обновляем отображение результатов
+    }
+
+    function displayResults() {
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = '<h3>Последние 10 результатов:</h3>';
+        if (results.length === 0) {
+            resultsDiv.innerHTML += '<p>Нет доступных результатов.</p>';
+        } else {
+            results.forEach((result, index) => {
+                resultsDiv.innerHTML += `<p>${index + 1}: ${result}</p>`;
+            });
+        }
+    }
+
+    function newGame() {
+        score = 0;
+        clearInterval(game);
+        // Сброс змейки
+        snake = [];
+        snake[0] = {
+            x: 9 * box,
+            y: 9 * box,
+        };
+        // Обновление позиции еды
+        locationFood = {
+            x: Math.floor(Math.random() * 17 + 1) * box,
+            y: Math.floor(Math.random() * 16 + 1) * box,
+        };
+
+        // Запуск новой игры
+        game = setInterval(drawGame, 120);
+
+    }
+
     let dir;
 
     function direction(event) {
-        if (event.keyCode == 37 && dir !== 'right') {
+        if ((event.keyCode == 37 || event.keyCode == 65) && dir !== 'right') {
             dir = 'left';
-        } else if (event.keyCode == 38 && dir !== 'down') {
+        } else if ((event.keyCode == 38 || event.keyCode == 87) && dir !== 'down') {
             dir = 'up';
-        } else if (event.keyCode == 39 && dir !== 'left') {
+        } else if ((event.keyCode == 39 || event.keyCode == 68) && dir !== 'left') {
             dir = 'right';
-        } else if (event.keyCode == 40 && dir !== 'up') {
+        } else if ((event.keyCode == 40 || event.keyCode == 83) && dir !== 'up') {
             dir = 'down';
+        } else if (event.keyCode == 32 || event.keyCode == 13) {
+            newGame();
         }
     }
 
@@ -74,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function eatTail(head, arr) {
         for (let i = 0; i < arr.length; i++) {
             if (head.x == arr[i].x && head.y == arr[i].y) {
+                saveResults();
                 clearInterval(game);
             }
         }
@@ -85,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.clearRect(0, 0, field.width, field.height); // Очистка канваса
 
         ctx.drawImage(background, 0, 0);
-        ctx.drawImage(sound, box * 16, box * 17.8, box * 2, box * 2)
+        ctx.drawImage(play, box * 16, box * 17.8, box * 2, box * 2)
         ctx.drawImage(food, locationFood.x, locationFood.y);
 
         //голова змейки
@@ -108,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //тело змейки
         for (let i = 1; i < snake.length; i++) {
             ctx.drawImage(tailSnake, snake[i].x, snake[i].y, box, box);
-        }        
+        }
 
         ctx.fillStyle = 'white';
         ctx.font = '50px Arial';
@@ -126,9 +174,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         } else {
             snake.pop();
-        }
+        };
 
         if (snakeX < box || snakeX > box * 17 || snakeY < box || snakeY > box * 16) {
+            saveResults();
             clearInterval(game);
         }
 
@@ -149,7 +198,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
         eatTail(newHead, snake);
         snake.unshift(newHead);
-    }
+    };
 
-    let game = setInterval(drawGame, 150);
+    field.addEventListener('click', function (event) {
+        const rect = field.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        // Проверка нажатия на кнопку "play"
+        if (x >= box * 16 && x <= box * 16 + box * 1.5 && y >= box * 17.2 && y <= box * 17.2 + box * 1.5) {
+            // Действия при нажатии на кнопку "play"
+            score = 0;
+            clearInterval(game);
+            newGame();
+        };
+    });
+
+    displayResults();
+
+    let game = setInterval(drawGame, 120);
 });
