@@ -43,6 +43,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const tailSnake = new Image();
     tailSnake.src = './assets/img/snake-tail.png'
 
+    const audio = new Audio();
+
+    function playAudio(srcs) {
+        audio.src = `./assets/audio/${srcs}`;
+        audio.currentTime = 0;
+        audio.play();
+    }
+
     const box = 25;
     let score = 0;
 
@@ -68,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
         results.unshift(score);
         localStorage.setItem(resultsKey, JSON.stringify(results));
         displayResults();
-        console.log(results) // Обновляем отображение результатов
     }
 
     function displayResults() {
@@ -96,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.fillText(`Вы набрали: ${score}`, box * 4.5, box * 10.5);
     }
 
-    function drawInfo(){
+    function drawInfo() {
         ctx.fillStyle = 'wait';
         ctx.font = '16px Arial';
         ctx.fillText(`Управление: w, a, s, d или ↑ ↓ → ←`, box, box * 18.5);
@@ -146,7 +153,8 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let i = 0; i < arr.length; i++) {
             if (head.x == arr[i].x && head.y == arr[i].y) {
                 saveResults();
-                drawResult()
+                playAudio('konets-igryi.mp3');
+                drawResult();
                 clearInterval(game);
             }
         }
@@ -193,6 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (snakeX == locationFood.x && snakeY == locationFood.y) {
             score++;
+            playAudio('ukus.mp3');
             updateFood(); // Обновляем еду при поедании
             locationFood = {
                 x: Math.floor(Math.random() * 17 + 1) * box,
@@ -205,7 +214,8 @@ document.addEventListener("DOMContentLoaded", function () {
         //проиграл
         if (snakeX < box || snakeX > box * 17 || snakeY < box || snakeY > box * 16) {
             saveResults();
-            drawResult()
+            playAudio('konets-igryi.mp3');
+            drawResult();
             clearInterval(game);
         }
 
