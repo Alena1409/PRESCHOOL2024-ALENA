@@ -46,3 +46,12 @@ footer {
 .school {
     height: 100%;
 }
+
+#results {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    background-color: transparent;
+    padding: 10px;
+}
+
