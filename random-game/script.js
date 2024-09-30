@@ -6,14 +6,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const background = new Image();
     background.src = './assets/img/field.png';
 
-    const play = new Image();
-    play.src = './assets/svg/youtube.svg'
+    const resultImg = new Image();
+    resultImg.src = './assets/img/apple-worm.png'
 
     foods = [
         "./assets/img/blueberry.png",
         "./assets/img/cherry.png",
         "./assets/img/grapes.png",
         "./assets/img/strawberry.png",
+        "./assets/img/apple.png",
+        "./assets/img/raspberry.png",
     ]
 
     let foodIndex = 0; // Индекс текущей еды
@@ -25,17 +27,18 @@ document.addEventListener("DOMContentLoaded", function () {
         food.src = foods[foodIndex]; // Обновляем источник изображения еды
     }
 
+    //голова в разные стороны
     const headSnakeUp = new Image();
-    headSnakeUp.src = './assets/img/snake-head-up.png'; // Для вверх
+    headSnakeUp.src = './assets/img/snake-head-up.png'; // вверх
 
     const headSnakeDown = new Image();
-    headSnakeDown.src = './assets/img/snake-head.png'; // Для вниз
+    headSnakeDown.src = './assets/img/snake-head.png'; // вниз
 
     const headSnakeLeft = new Image();
-    headSnakeLeft.src = './assets/img/snake-head-l.png'; // Для влево
+    headSnakeLeft.src = './assets/img/snake-head-l.png'; // влево
 
     const headSnakeRight = new Image();
-    headSnakeRight.src = './assets/img/snake-head-r.png'; // Для вправо
+    headSnakeRight.src = './assets/img/snake-head-r.png'; // вправо
 
     const tailSnake = new Image();
     tailSnake.src = './assets/img/snake-tail.png'
@@ -80,6 +83,26 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    function drawResult() {
+        ctx.fillStyle = '#66a07a';
+        ctx.fillRect(box * 4, box * 6, box * 11, box * 6);
+        ctx.strokeStyle = 'gray'
+        ctx.lineWidth = 3;
+        ctx.strokeRect(box * 4, box * 6, box * 11, box * 6);
+
+        ctx.fillStyle = 'black';
+        ctx.font = '35px Arial';
+        ctx.fillText(`Игра окончена!`, box * 4.5, box * 8.5);
+        ctx.fillText(`Вы набрали: ${score}`, box * 4.5, box * 10.5);
+    }
+
+    function drawInfo(){
+        ctx.fillStyle = 'wait';
+        ctx.font = '16px Arial';
+        ctx.fillText(`Управление: w, a, s, d или ↑ ↓ → ←`, box, box * 18.5);
+        ctx.fillText(`Перезапуск: enter или пробел `, box, box * 19.5);
+    }
+
     function newGame() {
         score = 0;
         clearInterval(game);
@@ -96,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         // Запуск новой игры
-        game = setInterval(drawGame, 120);
+        game = setInterval(drawGame, 100);
 
     }
 
@@ -118,23 +141,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.addEventListener('keydown', direction);
 
+    //проиграл
     function eatTail(head, arr) {
         for (let i = 0; i < arr.length; i++) {
             if (head.x == arr[i].x && head.y == arr[i].y) {
                 saveResults();
+                drawResult()
                 clearInterval(game);
             }
         }
     }
 
-
     function drawGame() {
 
-        ctx.clearRect(0, 0, field.width, field.height); // Очистка канваса
+        ctx.clearRect(0, 0, field.width, field.height); // очистка канваса
 
         ctx.drawImage(background, 0, 0);
-        ctx.drawImage(play, box * 16, box * 17.8, box * 2, box * 2)
         ctx.drawImage(food, locationFood.x, locationFood.y);
+        ctx.drawImage(resultImg, box * 12.3, box * 17.4)
+        drawInfo();
 
         //голова змейки
         let headSnake;
@@ -158,9 +183,10 @@ document.addEventListener("DOMContentLoaded", function () {
             ctx.drawImage(tailSnake, snake[i].x, snake[i].y, box, box);
         }
 
+        //счет рисуем
         ctx.fillStyle = 'white';
         ctx.font = '50px Arial';
-        ctx.fillText(score, box, box * 19.6);
+        ctx.fillText(score, box * 15.5, box * 19.6);
 
         let snakeX = snake[0].x;
         let snakeY = snake[0].y;
@@ -176,8 +202,10 @@ document.addEventListener("DOMContentLoaded", function () {
             snake.pop();
         };
 
+        //проиграл
         if (snakeX < box || snakeX > box * 17 || snakeY < box || snakeY > box * 16) {
             saveResults();
+            drawResult()
             clearInterval(game);
         }
 
@@ -200,21 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
         snake.unshift(newHead);
     };
 
-    field.addEventListener('click', function (event) {
-        const rect = field.getBoundingClientRect();
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-
-        // Проверка нажатия на кнопку "play"
-        if (x >= box * 16 && x <= box * 16 + box * 1.5 && y >= box * 17.2 && y <= box * 17.2 + box * 1.5) {
-            // Действия при нажатии на кнопку "play"
-            score = 0;
-            clearInterval(game);
-            newGame();
-        };
-    });
-
     displayResults();
 
-    let game = setInterval(drawGame, 120);
+    let game = setInterval(drawGame, 100);
 });

@@ -49,20 +49,9 @@ footer {
 
 #results {
     position: absolute;
-    top: 10px;
+    top: 5px;
     left: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: transparent;
     padding: 10px;
-    border: 1px solid black;
 }
 
-.info {
-
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    border: 1px solid black;
-
-}
