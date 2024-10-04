@@ -57,6 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const box = 25;
     let score = 0;
+    let speed = 200; 
+
 
     let locationFood = {
         x: Math.floor(Math.random() * 17 + 1) * box,
@@ -146,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         // Запуск новой игры
-        game = setInterval(drawGame, 200);
+        game = setInterval(drawGame, speed);
 
     }
 
@@ -176,12 +178,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 playAudio('konets-igryi.mp3', 0.2);
                 drawResult();
                 clearInterval(game);
+                speed = 200;
             }
         }
     }
 
     function drawGame() {
-
         ctx.clearRect(0, 0, field.width, field.height); // очистка канваса
 
         ctx.drawImage(background, 0, 0);
@@ -228,11 +230,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 x: Math.floor(Math.random() * 17 + 1) * box,
                 y: Math.floor(Math.random() * 16 + 1) * box,
             }
+            
+            // Увеличиваем скорость каждые 5 очков
+
+            if (score % 5 === 0) { 
+                speed = Math.max(50, speed - 10); 
+                clearInterval(game);
+                game = setInterval(drawGame, speed);
+            }
+
+
         } else {
             snake.pop();
         };
 
-        if (score === 2 || score === 5 || score === 10 || score === 20 || score === 30 || score === 50 || score >= 55) {
+        if (score === 2 || score === 5 || score % 10 === 0) {
             ctx.drawImage(door, box * 17, box * 16)
             if (snakeX == box *17 && snakeY == box *16) {
                 saveResults();
@@ -248,6 +260,7 @@ document.addEventListener("DOMContentLoaded", function () {
             playAudio('konets-igryi.mp3', 0.2);
             drawResult();
             clearInterval(game);
+            speed = 200;
         }
 
         if (dir == 'left') {
@@ -270,5 +283,5 @@ document.addEventListener("DOMContentLoaded", function () {
         displayResults();
     };
 
-    let game = setInterval(drawGame, 200);
+    let game = setInterval(drawGame, speed);
 });
