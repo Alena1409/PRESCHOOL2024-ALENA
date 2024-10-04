@@ -9,7 +9,7 @@ body {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    background: linear-gradient(47deg, #66a07a 0%, #4d8164 100%);
+    background: #03041F;
 }
 
 main {
@@ -28,14 +28,16 @@ footer {
     gap: 5%;
     align-items: center;
     justify-content: center;
+    color: #fff;
 }
 
-.snake {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 30%;
-    height: auto;
+a {
+    text-decoration: none;
+    color:#fff;
+}
+
+a:hover {
+    color: #CD0EFC;
 }
 
 .logo {
@@ -47,11 +49,4 @@ footer {
     height: 100%;
 }
 
-#results {
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    background-color: transparent;
-    padding: 10px;
-}
 
