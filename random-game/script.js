@@ -4,18 +4,18 @@ document.addEventListener("DOMContentLoaded", function () {
     const ctx = field.getContext("2d");
 
     const background = new Image();
-    background.src = './assets/img/field.png';
+    background.src = './assets/img/field2.png';
 
     const resultImg = new Image();
-    resultImg.src = './assets/img/apple-worm.png'
+    resultImg.src = './assets/img/bowlWithCandy.png'
 
     foods = [
-        "./assets/img/blueberry.png",
-        "./assets/img/cherry.png",
-        "./assets/img/grapes.png",
-        "./assets/img/strawberry.png",
-        "./assets/img/apple.png",
-        "./assets/img/raspberry.png",
+        "./assets/img/candy1.png",
+        "./assets/img/candy2.png",
+        "./assets/img/candy3.png",
+        "./assets/img/candy4.png",
+        "./assets/img/candy5.png",
+        "./assets/img/candy6.png",
     ]
 
     let foodIndex = 0; // Индекс текущей еды
@@ -75,39 +75,42 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         results.unshift(score);
         localStorage.setItem(resultsKey, JSON.stringify(results));
-        displayResults();
     }
 
     function displayResults() {
-        const resultsDiv = document.getElementById('results');
-        resultsDiv.innerHTML = '<h3>Последние 10 результатов:</h3>';
-        if (results.length === 0) {
-            resultsDiv.innerHTML += '<p>Нет доступных результатов.</p>';
-        } else {
-            results.forEach((result, index) => {
-                resultsDiv.innerHTML += `<p>${index + 1}: ${result}</p>`;
-            });
-        }
+        ctx.fillStyle = '#fff';
+        ctx.font = '16px Arial';
+
+    if (results.length === 0) {
+        ctx.fillText(`Нет результатов`, box * 19, box * 7.9);
+    } else {
+        results.forEach((result, index) => {
+            ctx.fillText(`${index + 1} игра: ${result}`, box * 19, box * (7.9 + index)); // Смещение по Y для каждого результата
+        });
+    }
     }
 
     function drawResult() {
-        ctx.fillStyle = '#66a07a';
+        ctx.fillStyle = '#03041F';
         ctx.fillRect(box * 4, box * 6, box * 11, box * 6);
-        ctx.strokeStyle = 'gray'
+        ctx.strokeStyle = '#CD0EFC'
         ctx.lineWidth = 3;
         ctx.strokeRect(box * 4, box * 6, box * 11, box * 6);
 
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = '#1F3FE8';
         ctx.font = '35px Arial';
         ctx.fillText(`Игра окончена!`, box * 4.5, box * 8.5);
         ctx.fillText(`Вы набрали: ${score}`, box * 4.5, box * 10.5);
     }
 
     function drawInfo() {
-        ctx.fillStyle = 'wait';
-        ctx.font = '16px Arial';
-        ctx.fillText(`Управление: w, a, s, d или ↑ ↓ → ←`, box, box * 18.5);
-        ctx.fillText(`Перезапуск: enter или пробел `, box, box * 19.5);
+        ctx.fillStyle = '#37F260';
+        ctx.font = '13px Arial';
+        ctx.fillText(`Управление: w, a, s, d (↑ ↓ → ←)`, box * 18.7, box * 4.5);
+        ctx.fillText(`Перезапуск: enter или пробел`, box * 18.7, box * 5.1);
+        ctx.fillStyle = '#fff';
+        ctx.font = '20px Arial';
+        ctx.fillText(`Итоги:`, box * 19, box * 6.8);
     }
 
     function newGame() {
@@ -166,8 +169,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         ctx.drawImage(background, 0, 0);
         ctx.drawImage(food, locationFood.x, locationFood.y);
-        ctx.drawImage(resultImg, box * 12.3, box * 17.4)
+        ctx.drawImage(resultImg, box * 19, box * 0.5)
         drawInfo();
+        
 
         //голова змейки
         let headSnake;
@@ -192,9 +196,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         //счет рисуем
-        ctx.fillStyle = 'white';
-        ctx.font = '50px Arial';
-        ctx.fillText(score, box * 15.5, box * 19.6);
+        ctx.fillStyle = '#F21ADD';
+        ctx.font = '60px Arial';
+        ctx.fillText(score, box * 23, box * 2.7);
 
         let snakeX = snake[0].x;
         let snakeY = snake[0].y;
@@ -236,9 +240,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         eatTail(newHead, snake);
         snake.unshift(newHead);
+        displayResults();
     };
-
-    displayResults();
 
     let game = setInterval(drawGame, 100);
 });
