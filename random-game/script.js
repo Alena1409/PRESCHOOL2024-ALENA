@@ -45,9 +45,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const audio = new Audio();
 
-    function playAudio(srcs) {
+    function playAudio(srcs, volume = 1.0) {
         audio.src = `./assets/audio/${srcs}`;
         audio.currentTime = 0;
+        audio.volume = volume;
         audio.play();
     }
 
@@ -156,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let i = 0; i < arr.length; i++) {
             if (head.x == arr[i].x && head.y == arr[i].y) {
                 saveResults();
-                playAudio('konets-igryi.mp3');
+                playAudio('konets-igryi.mp3', 0.2);
                 drawResult();
                 clearInterval(game);
             }
@@ -205,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (snakeX == locationFood.x && snakeY == locationFood.y) {
             score++;
-            playAudio('ukus.mp3');
+            playAudio('ukus.mp3', 0.2);
             updateFood(); // Обновляем еду при поедании
             locationFood = {
                 x: Math.floor(Math.random() * 17 + 1) * box,
@@ -218,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
         //проиграл
         if (snakeX < box || snakeX > box * 17 || snakeY < box || snakeY > box * 16) {
             saveResults();
-            playAudio('konets-igryi.mp3');
+            playAudio('konets-igryi.mp3', 0.2);
             drawResult();
             clearInterval(game);
         }
