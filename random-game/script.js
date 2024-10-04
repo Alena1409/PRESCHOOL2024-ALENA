@@ -52,6 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
         audio.play();
     }
 
+    const door = new Image();
+    door.src = `./assets/img/door.png`
+
     const box = 25;
     let score = 0;
 
@@ -104,6 +107,19 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.fillText(`Вы набрали: ${score}`, box * 4.5, box * 10.5);
     }
 
+    function drawResult2() {
+        ctx.fillStyle = '#03041F';
+        ctx.fillRect(box * 4, box * 6, box * 11, box * 6);
+        ctx.strokeStyle = '#F90808'
+        ctx.lineWidth = 3;
+        ctx.strokeRect(box * 4, box * 6, box * 11, box * 6);
+
+        ctx.fillStyle = '#F90808';
+        ctx.font = '35px Arial';
+        ctx.fillText(`Ты выиграл!!!`, box * 4.5, box * 8.5);
+        ctx.fillText(`И набрал: ${score}`, box * 4.5, box * 10.5);
+    }
+
     function drawInfo() {
         ctx.fillStyle = '#37F260';
         ctx.font = '13px Arial';
@@ -130,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         // Запуск новой игры
-        game = setInterval(drawGame, 100);
+        game = setInterval(drawGame, 200);
 
     }
 
@@ -216,6 +232,16 @@ document.addEventListener("DOMContentLoaded", function () {
             snake.pop();
         };
 
+        if (score === 2 || score === 5 || score === 10 || score === 20 || score === 30 || score === 50 || score >= 55) {
+            ctx.drawImage(door, box * 17, box * 16)
+            if (snakeX == box *17 && snakeY == box *16) {
+                saveResults();
+            playAudio('ljnn.mp3', 0.2);
+            drawResult2();
+            clearInterval(game);
+            }
+        }
+
         //проиграл
         if (snakeX < box || snakeX > box * 17 || snakeY < box || snakeY > box * 16) {
             saveResults();
@@ -244,5 +270,5 @@ document.addEventListener("DOMContentLoaded", function () {
         displayResults();
     };
 
-    let game = setInterval(drawGame, 100);
+    let game = setInterval(drawGame, 200);
 });
